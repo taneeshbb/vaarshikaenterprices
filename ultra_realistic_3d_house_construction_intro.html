@@ -1,0 +1,2418 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vaarshika Enterprises | Premium Real Estate in Tenali, Andhra Pradesh</title>
+    <meta name="description" content="Explore verified residential plots, land, houses, and premium property investment opportunities with Vaarshika Enterprises in Tenali, Andhra Pradesh. Contact our team today.">
+    <link rel="canonical" href="https://vaarshikaenterprises.com">
+    
+    <!-- Open Graph Metadata -->
+    <meta property="og:title" content="Vaarshika Enterprises | Building Trust. Creating Futures.">
+    <meta property="og:description" content="Premier real estate advisory, residential plots, and homes in Tenali, Andhra Pradesh. Discover verified opportunities.">
+    <meta property="og:url" content="https://vaarshikaenterprises.com">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Vaarshika Enterprises">
+
+    <!-- Fonts: Cinzel & Cormorant Garamond for Editorial Luxury + Plus Jakarta Sans for UI Clarity -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Three.js 3D Engine for Cinematic Construction Animation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: {
+                            DEFAULT: '#101C2C',
+                            dark: '#0A131F',
+                            light: '#18273B',
+                            surface: '#1F314A'
+                        },
+                        ivory: {
+                            DEFAULT: '#F8F6F0',
+                            light: '#FFFFFF',
+                            muted: '#ECE8DF'
+                        },
+                        gold: {
+                            DEFAULT: '#C7A66A',
+                            light: '#DFC38E',
+                            dark: '#A68449',
+                            muted: 'rgba(199, 166, 106, 0.15)'
+                        },
+                        slateCustom: '#64748B'
+                    },
+                    fontFamily: {
+                        serif: ['"Cormorant Garamond"', 'serif'],
+                        display: ['"Cinzel"', 'serif'],
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        :root {
+            --midnight: #101C2C;
+            --gold: #C7A66A;
+            --ivory: #F8F6F0;
+        }
+
+        body {
+            background-color: #F8F6F0;
+            color: #101C2C;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Subtle Luxury Architectural Grid Background */
+        .blueprint-grid {
+            background-size: 40px 40px;
+            background-image: 
+                linear-gradient(to right, rgba(199, 166, 106, 0.07) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(199, 166, 106, 0.07) 1px, transparent 1px);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #101C2C;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #C7A66A;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #DFC38E;
+        }
+
+        /* Cinematic 3D Construction Overlay */
+        #intro-overlay {
+            transition: opacity 1.2s cubic-bezier(0.65, 0, 0.35, 1), visibility 1.2s;
+            touch-action: pan-y;
+        }
+        #intro-overlay.fade-out {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        #three-construction-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: block;
+            outline: none;
+        }
+
+        .cinematic-vignette {
+            box-shadow: inset 0 0 140px rgba(10, 19, 31, 0.78), inset 0 0 50px rgba(10, 19, 31, 0.88);
+        }
+
+        .glass-hud {
+            background: rgba(16, 28, 44, 0.72);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid rgba(199, 166, 106, 0.28);
+        }
+    </style>
+</head>
+<body class="selection:bg-gold selection:text-navy">
+
+    <!-- ULTRA-REALISTIC CINEMATIC 3D HOUSE CONSTRUCTION EXPERIENCE (NO HUMAN FIGURES) -->
+    <div id="intro-overlay" class="fixed inset-0 z-50 flex flex-col justify-between bg-navy-dark text-ivory overflow-hidden select-none" role="dialog" aria-modal="true" aria-label="3D Architectural Construction Showcase">
+        <!-- Three.js WebGL Rendering Canvas -->
+        <canvas id="three-construction-canvas"></canvas>
+
+        <!-- Cinematic Optical Vignette & Lighting Filter -->
+        <div class="cinematic-vignette absolute inset-0 pointer-events-none z-10"></div>
+
+        <!-- Top Status Bar & Skip Control -->
+        <div class="relative z-20 flex items-center justify-between p-4 sm:p-8 max-w-7xl mx-auto w-full">
+            <div class="glass-hud px-4 py-2 rounded-full flex items-center space-x-3 shadow-lg">
+                <span class="inline-block w-2.5 h-2.5 rounded-full bg-gold animate-ping"></span>
+                <span id="construction-stage-label" class="text-xs uppercase tracking-[0.2em] text-gold-light font-display font-medium">
+                    Scene 01 // Empty Residential Plot • Site Survey
+                </span>
+            </div>
+
+            <div class="flex items-center space-x-3">
+                <button id="skip-intro-btn" class="glass-hud hover:border-gold px-5 py-2 text-xs uppercase tracking-widest text-ivory hover:text-gold transition-all duration-300 rounded-full shadow-lg group flex items-center space-x-2">
+                    <span>Skip Presentation</span>
+                    <span class="text-gold group-hover:translate-x-0.5 transition-transform">✕</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Real-Time Architectural Construction Telemetry HUD (Pure Structural Engineering, No Human Elements) -->
+        <div class="relative z-20 px-4 sm:px-8 max-w-7xl mx-auto w-full flex justify-between items-end pointer-events-none">
+            <div id="architectural-telemetry-hud" class="glass-hud p-4 rounded-xl max-w-xs space-y-1.5 transition-all duration-700 opacity-90 hidden sm:block">
+                <div class="flex items-center justify-between border-b border-gold/20 pb-1.5">
+                    <span class="text-[10px] font-mono text-gold uppercase tracking-wider font-semibold">Architectural Telemetry</span>
+                    <span class="text-[10px] font-mono text-emerald-400">● LIVE FEED</span>
+                </div>
+                <div class="text-[11px] font-sans text-ivory/90 flex justify-between">
+                    <span>Engineering Phase:</span>
+                    <strong id="construction-action-text" class="text-gold-light font-medium">Survey Stakes & Soil Prep</strong>
+                </div>
+                <div class="text-[11px] font-sans text-ivory/80 flex justify-between">
+                    <span>Active Component:</span>
+                    <span id="structure-phase-text" class="font-mono text-ivory">Residential Plot Boundary</span>
+                </div>
+                <div class="text-[11px] font-sans text-ivory/80 flex justify-between">
+                    <span>Project Location:</span>
+                    <span class="font-mono text-gold-light">Tenali, Andhra Pradesh</span>
+                </div>
+            </div>
+
+            <!-- Hint for Interactive 3D Orbit -->
+            <div id="orbit-hint" class="glass-hud px-3.5 py-1.5 rounded-lg text-[10px] font-mono text-gold-light tracking-wider opacity-0 transition-opacity duration-700 pointer-events-auto">
+                <span>✦ Click & drag to orbit completed residence</span>
+            </div>
+        </div>
+
+        <!-- Center Brand Reveal Unit (Appears smoothly as the completed villa finishes) -->
+        <div id="brand-reveal-unit" class="absolute inset-0 z-30 flex flex-col items-center justify-center text-center px-4 bg-gradient-to-t from-navy-dark/95 via-navy-dark/60 to-transparent opacity-0 pointer-events-none transition-all duration-1000">
+            <div class="max-w-xl mx-auto">
+                <div class="w-16 h-16 rounded-2xl border border-gold/50 bg-navy/90 backdrop-blur-md flex items-center justify-center text-gold mx-auto mb-4 shadow-2xl">
+                    <svg class="w-9 h-9" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M3 21h18M5 21V7l7-4 7 4v14M9 10h1m4 0h1m-6 4h1m4 0h1m-4 4h2" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <span class="text-xs uppercase tracking-[0.35em] text-gold-light font-display font-semibold block mb-2">
+                    Premier Real Estate Advisory
+                </span>
+                <h1 class="text-3xl sm:text-5xl md:text-6xl font-display font-bold tracking-wider text-ivory">
+                    VAARSHIKA ENTERPRISES
+                </h1>
+                <p class="font-serif italic text-xl sm:text-2xl text-gold-light mt-2 tracking-wide">
+                    “Building Trust. Creating Futures.”
+                </p>
+                <div class="mt-4 flex items-center justify-center space-x-2 text-xs text-slateCustom font-mono uppercase tracking-widest">
+                    <span>Tenali Main Branch</span>
+                    <span>•</span>
+                    <span>Andhra Pradesh</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Timeline & Phase Progression Bar -->
+        <div class="relative z-20 pb-6 sm:pb-8 px-4 sm:px-8 max-w-2xl mx-auto w-full">
+            <div class="w-full bg-navy/80 border border-gold/20 h-1.5 rounded-full overflow-hidden backdrop-blur-md">
+                <div id="intro-progress-bar" class="bg-gradient-to-r from-gold-dark via-gold to-gold-light h-full w-0 transition-all duration-75"></div>
+            </div>
+            <div class="grid grid-cols-5 text-[9px] sm:text-[10px] text-slateCustom uppercase tracking-wider mt-2 font-mono text-center">
+                <span id="step-mark-0" class="text-gold-light font-semibold">1. Plot</span>
+                <span id="step-mark-1">2. Foundation</span>
+                <span id="step-mark-2">3. Structure</span>
+                <span id="step-mark-3">4. Finishes</span>
+                <span id="step-mark-4">5. Completed Villa</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN NAVIGATION -->
+    <header id="main-navbar" class="fixed top-0 left-0 right-0 z-40 bg-navy/95 backdrop-blur-md border-b border-gold/15 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Brand Wordmark & Monogram -->
+                <a href="#home" class="flex items-center space-x-3 group focus:outline-none">
+                    <div class="w-10 h-10 rounded-lg border border-gold/40 bg-navy-light flex items-center justify-center text-gold group-hover:border-gold transition-colors duration-300 shadow-md">
+                        <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M3 21h18M5 21V7l7-4 7 4v14M9 10h1m4 0h1m-6 4h1m-4 4h2" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="font-display text-lg md:text-xl font-bold tracking-wider text-ivory group-hover:text-gold-light transition-colors">
+                            VAARSHIKA
+                        </span>
+                        <span class="text-[9px] uppercase tracking-[0.25em] text-gold font-sans font-semibold -mt-1">
+                            ENTERPRISES
+                        </span>
+                    </div>
+                </a>
+
+                <!-- Desktop Navigation Links -->
+                <nav class="hidden md:flex items-center space-x-8" aria-label="Main Navigation">
+                    <a href="#home" class="text-sm font-medium text-ivory/90 hover:text-gold transition-colors">Home</a>
+                    <a href="#about" class="text-sm font-medium text-ivory/90 hover:text-gold transition-colors">About Us</a>
+                    <a href="#properties" class="text-sm font-medium text-ivory/90 hover:text-gold transition-colors">Properties</a>
+                    <a href="#services" class="text-sm font-medium text-ivory/90 hover:text-gold transition-colors">Our Services</a>
+                    <a href="#leadership" class="text-sm font-medium text-ivory/90 hover:text-gold transition-colors">Leadership</a>
+                    <a href="#why-us" class="text-sm font-medium text-ivory/90 hover:text-gold transition-colors">Why Choose Us</a>
+                    <a href="#contact" class="text-sm font-medium text-ivory/90 hover:text-gold transition-colors">Contact</a>
+                </nav>
+
+                <!-- Action Button & Replay Intro Button -->
+                <div class="hidden sm:flex items-center space-x-4">
+                    <button onclick="triggerIntroReplay()" title="Replay house construction animation" class="p-2 text-ivory/60 hover:text-gold transition-colors text-xs flex items-center gap-1 border border-navy-surface rounded-md">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+                        </svg>
+                        <span class="hidden lg:inline text-[11px] font-mono">Replay 3D Intro</span>
+                    </button>
+
+                    <a href="#contact" class="relative inline-flex items-center justify-center px-6 py-2.5 text-xs font-semibold uppercase tracking-widest text-navy bg-gradient-to-r from-gold-light via-gold to-gold-dark hover:brightness-105 transition-all duration-300 rounded-md shadow-lg shadow-gold/20">
+                        Enquire Now
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="flex items-center sm:hidden space-x-2">
+                    <button id="mobile-menu-btn" class="p-2 rounded-md text-ivory hover:text-gold focus:outline-none" aria-label="Toggle Mobile Menu">
+                        <svg id="hamburger-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                        </svg>
+                        <svg id="close-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Drawer -->
+        <div id="mobile-menu-drawer" class="hidden sm:hidden bg-navy-dark border-b border-gold/20 px-6 py-6 transition-all duration-300">
+            <div class="flex flex-col space-y-4">
+                <a href="#home" class="mobile-nav-link text-base font-medium text-ivory hover:text-gold py-1">Home</a>
+                <a href="#about" class="mobile-nav-link text-base font-medium text-ivory hover:text-gold py-1">About Us</a>
+                <a href="#properties" class="mobile-nav-link text-base font-medium text-ivory hover:text-gold py-1">Properties</a>
+                <a href="#services" class="mobile-nav-link text-base font-medium text-ivory hover:text-gold py-1">Our Services</a>
+                <a href="#leadership" class="mobile-nav-link text-base font-medium text-ivory hover:text-gold py-1">Leadership</a>
+                <a href="#why-us" class="mobile-nav-link text-base font-medium text-ivory hover:text-gold py-1">Why Choose Us</a>
+                <a href="#contact" class="mobile-nav-link text-base font-medium text-ivory hover:text-gold py-1">Contact</a>
+                <div class="pt-4 flex flex-col gap-3">
+                    <a href="#contact" class="mobile-nav-link text-center py-3 text-xs font-semibold uppercase tracking-widest text-navy bg-gold rounded-md">
+                        Enquire Now
+                    </a>
+                    <button onclick="triggerIntroReplay()" class="text-xs text-center py-2 text-gold-light border border-gold/30 rounded-md">
+                        Replay Construction Film
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section id="home" class="relative min-h-screen pt-24 flex items-center justify-center bg-navy text-ivory overflow-hidden">
+        <!-- Background Architectural Image with Luxury Overlay -->
+        <div class="absolute inset-0 z-0 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1613490493576-7fde63acd811?q=80&w=2000&auto=format&fit=crop');">
+            <div class="absolute inset-0 bg-gradient-to-r from-navy-dark/95 via-navy-dark/85 to-navy/70"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-navy-dark via-transparent to-navy-dark/80"></div>
+            <div class="absolute inset-0 blueprint-grid opacity-15"></div>
+        </div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 flex flex-col justify-between min-h-[calc(100vh-6rem)]">
+            <div class="max-w-3xl pt-8 md:pt-16">
+                <!-- Location & Trust Badge -->
+                <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-navy-light/80 border border-gold/30 backdrop-blur-md mb-6">
+                    <svg class="w-4 h-4 text-gold" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"></path>
+                    </svg>
+                    <span class="text-xs tracking-widest uppercase font-semibold text-gold-light">
+                        Tenali Main Branch • Andhra Pradesh
+                    </span>
+                </div>
+
+                <h1 class="text-4xl sm:text-6xl lg:text-7xl font-serif font-normal leading-[1.1] tracking-tight text-ivory">
+                    Find a Place to <br>
+                    <span class="italic font-serif text-gold-light">Call Home.</span>
+                </h1>
+
+                <p class="mt-6 text-base sm:text-lg text-ivory/80 leading-relaxed font-light max-w-2xl">
+                    Discover properties, explore opportunities, and take the next step towards your future with <strong class="font-medium text-ivory">Vaarshika Enterprises</strong>. Transparent real estate advisory in Tenali and Andhra Pradesh.
+                </p>
+
+                <!-- Primary CTAs -->
+                <div class="mt-8 flex flex-wrap gap-4 items-center">
+                    <a href="#properties" class="px-8 py-4 bg-gradient-to-r from-gold-light via-gold to-gold-dark text-navy font-semibold text-xs tracking-widest uppercase rounded-md shadow-xl hover:shadow-gold/25 hover:-translate-y-0.5 transition-all duration-300">
+                        Explore Properties
+                    </a>
+                    <a href="#contact" class="px-8 py-4 border border-gold/40 text-ivory hover:text-gold hover:border-gold font-medium text-xs tracking-widest uppercase rounded-md backdrop-blur-sm hover:-translate-y-0.5 transition-all duration-300">
+                        Contact Our Team
+                    </a>
+                </div>
+
+                <!-- Verified Phone Links -->
+                <div class="mt-8 pt-6 border-t border-gold/15 flex flex-wrap items-center gap-6 text-xs text-ivory/70 font-mono">
+                    <div class="flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+                        <span>Direct Consultation:</span>
+                    </div>
+                    <a href="tel:+919052058083" class="hover:text-gold transition-colors flex items-center gap-1">
+                        <span>📞 +91 9052058083 (Taneesh)</span>
+                    </a>
+                    <a href="tel:+918790529335" class="hover:text-gold transition-colors flex items-center gap-1">
+                        <span>📞 +91 8790529335 (Naveen)</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- COMPACT PROPERTY SEARCH PANEL -->
+            <div class="mt-12 bg-navy-dark/90 backdrop-blur-xl border border-gold/30 rounded-xl p-6 shadow-2xl">
+                <form id="hero-search-form" onsubmit="handleHeroSearch(event)" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div>
+                        <label for="hero-prop-type" class="block text-xs uppercase tracking-wider text-gold-light mb-1.5 font-medium">Property Type</label>
+                        <select id="hero-prop-type" class="w-full bg-navy border border-gold/20 rounded-lg px-3.5 py-2.5 text-sm text-ivory focus:border-gold focus:outline-none">
+                            <option value="all">All Types</option>
+                            <option value="Residential Plot">Residential Plot</option>
+                            <option value="Independent House">Independent House</option>
+                            <option value="Luxury Villa">Luxury Villa</option>
+                            <option value="Land / Commercial">Land / Commercial</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="hero-location" class="block text-xs uppercase tracking-wider text-gold-light mb-1.5 font-medium">Preferred Location</label>
+                        <select id="hero-location" class="w-full bg-navy border border-gold/20 rounded-lg px-3.5 py-2.5 text-sm text-ivory focus:border-gold focus:outline-none">
+                            <option value="all">All Locations (Tenali)</option>
+                            <option value="Tenali Town">Tenali Town Center</option>
+                            <option value="Nandivelugu Road">Nandivelugu Road</option>
+                            <option value="Chenchupet">Chenchupet Corridor</option>
+                            <option value="Morrispet">Morrispet</option>
+                            <option value="Tenali-Guntur Road">Tenali-Guntur Highway</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="hero-budget" class="block text-xs uppercase tracking-wider text-gold-light mb-1.5 font-medium">Budget Range</label>
+                        <select id="hero-budget" class="w-full bg-navy border border-gold/20 rounded-lg px-3.5 py-2.5 text-sm text-ivory focus:border-gold focus:outline-none">
+                            <option value="all">Any Budget</option>
+                            <option value="under-25L">Under ₹25 Lakhs</option>
+                            <option value="25L-50L">₹25 Lakhs - ₹50 Lakhs</option>
+                            <option value="50L-1Cr">₹50 Lakhs - ₹1 Crore</option>
+                            <option value="above-1Cr">Above ₹1 Crore</option>
+                        </select>
+                    </div>
+
+                    <div class="flex items-end">
+                        <button type="submit" class="w-full bg-gold hover:bg-gold-light text-navy font-semibold px-4 py-2.5 rounded-lg text-xs uppercase tracking-widest transition-all duration-300 flex items-center justify-center space-x-2 h-[42px] shadow-md">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                            </svg>
+                            <span>Search Properties</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Scroll Down Cue -->
+        <a href="#about" class="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 text-ivory/40 hover:text-gold transition-colors flex flex-col items-center">
+            <span class="text-[10px] uppercase tracking-widest font-mono mb-1">Scroll</span>
+            <svg class="w-4 h-4 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+            </svg>
+        </a>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="py-24 bg-ivory relative blueprint-grid">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <!-- Architectural Visual Composition -->
+                <div class="lg:col-span-5 relative">
+                    <div class="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-white">
+                        <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=1200&auto=format&fit=crop" 
+                             alt="Luxury Architecture in India" 
+                             class="w-full h-[450px] object-cover hover:scale-105 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-navy/60 to-transparent"></div>
+                        <div class="absolute bottom-6 left-6 right-6 p-4 rounded-xl bg-white/90 backdrop-blur-md border border-gold/30 shadow-lg">
+                            <p class="text-xs uppercase tracking-widest text-gold-dark font-semibold">Our Commitment</p>
+                            <p class="text-sm font-serif text-navy mt-1">Honest local market guidance with customer verification at every step.</p>
+                        </div>
+                    </div>
+                    <!-- Decorative Golden Frame Accent -->
+                    <div class="absolute -top-4 -left-4 w-28 h-28 border-t-2 border-l-2 border-gold pointer-events-none -z-10"></div>
+                    <div class="absolute -bottom-4 -right-4 w-28 h-28 border-b-2 border-r-2 border-gold pointer-events-none -z-10"></div>
+                </div>
+
+                <!-- Narrative Copy -->
+                <div class="lg:col-span-7">
+                    <div class="inline-flex items-center space-x-2 text-gold-dark mb-3">
+                        <span class="w-8 h-[1px] bg-gold"></span>
+                        <span class="text-xs font-semibold uppercase tracking-[0.25em]">About Vaarshika Enterprises</span>
+                    </div>
+
+                    <h2 class="text-3xl sm:text-5xl font-serif text-navy leading-tight">
+                        Your Property Journey <br>
+                        <span class="italic text-gold-dark">Starts With Trust.</span>
+                    </h2>
+
+                    <p class="mt-6 text-slateCustom text-base sm:text-lg leading-relaxed">
+                        At <strong class="text-navy font-semibold">Vaarshika Enterprises</strong>, we aim to make your property search simpler, clearer, and more convenient. From exploring residential opportunities to discussing your specific property requirements, our team is here to help you make informed decisions.
+                    </p>
+
+                    <p class="mt-4 text-slateCustom text-sm sm:text-base leading-relaxed">
+                        Headquartered in <strong class="text-navy font-semibold">Tenali, Andhra Pradesh</strong>, we specialize in residential plots, land acquisitions, and modern residential developments. We believe real estate is not merely a transaction—it is the foundation of family security and long-term financial growth.
+                    </p>
+
+                    <!-- Core Value Grid -->
+                    <div class="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-6 pt-6 border-t border-gold/20">
+                        <div>
+                            <div class="w-8 h-8 rounded-full bg-gold/15 flex items-center justify-center text-gold-dark mb-2 font-display font-bold text-sm">01</div>
+                            <h4 class="font-display font-semibold text-navy text-sm uppercase tracking-wide">Clarity First</h4>
+                            <p class="text-xs text-slateCustom mt-1">Straightforward documentation and transparent discussions.</p>
+                        </div>
+                        <div>
+                            <div class="w-8 h-8 rounded-full bg-gold/15 flex items-center justify-center text-gold-dark mb-2 font-display font-bold text-sm">02</div>
+                            <h4 class="font-display font-semibold text-navy text-sm uppercase tracking-wide">Local Expertise</h4>
+                            <p class="text-xs text-slateCustom mt-1">Deep familiarity with Tenali corridors and growth sectors.</p>
+                        </div>
+                        <div>
+                            <div class="w-8 h-8 rounded-full bg-gold/15 flex items-center justify-center text-gold-dark mb-2 font-display font-bold text-sm">03</div>
+                            <h4 class="font-display font-semibold text-navy text-sm uppercase tracking-wide">Due Diligence</h4>
+                            <p class="text-xs text-slateCustom mt-1">Every plot and home is open to your comprehensive inspection.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROPERTIES DISCOVERY SECTION -->
+    <section id="properties" class="py-24 bg-white border-y border-gold/15">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Section Header -->
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="text-xs uppercase tracking-[0.3em] font-semibold text-gold-dark">Curated Portfolio</span>
+                <h2 class="text-3xl sm:text-5xl font-serif text-navy mt-2">
+                    Explore Featured Opportunities
+                </h2>
+                <p class="text-slateCustom mt-3 text-sm sm:text-base">
+                    Discover residential plots, independent houses, and strategic investment parcels.
+                </p>
+                <div class="inline-block mt-2 px-3 py-1 bg-amber-50 border border-amber-200 text-amber-800 rounded-full text-xs font-mono">
+                    Note: Catalogue shows verified sample inventory for demonstration. Contact us for real-time site availability.
+                </div>
+            </div>
+
+            <!-- CATEGORY FILTER BUTTONS -->
+            <div class="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mb-8" id="category-filter-group">
+                <button onclick="filterProperties('All')" data-cat="All" class="filter-btn active-filter px-5 py-2 text-xs uppercase tracking-wider font-semibold rounded-full border transition-all duration-200 bg-navy text-gold border-navy shadow-sm">
+                    All Categories
+                </button>
+                <button onclick="filterProperties('Residential Plots')" data-cat="Residential Plots" class="filter-btn px-5 py-2 text-xs uppercase tracking-wider font-semibold rounded-full border border-slate-200 text-slate-700 hover:border-gold hover:text-gold-dark transition-all duration-200">
+                    Residential Plots
+                </button>
+                <button onclick="filterProperties('Independent Houses')" data-cat="Independent Houses" class="filter-btn px-5 py-2 text-xs uppercase tracking-wider font-semibold rounded-full border border-slate-200 text-slate-700 hover:border-gold hover:text-gold-dark transition-all duration-200">
+                    Independent Houses
+                </button>
+                <button onclick="filterProperties('Luxury Villas')" data-cat="Luxury Villas" class="filter-btn px-5 py-2 text-xs uppercase tracking-wider font-semibold rounded-full border border-slate-200 text-slate-700 hover:border-gold hover:text-gold-dark transition-all duration-200">
+                    Luxury Villas
+                </button>
+                <button onclick="filterProperties('Commercial & Land')" data-cat="Commercial & Land" class="filter-btn px-5 py-2 text-xs uppercase tracking-wider font-semibold rounded-full border border-slate-200 text-slate-700 hover:border-gold hover:text-gold-dark transition-all duration-200">
+                    Land & Investment
+                </button>
+            </div>
+
+            <!-- SORT & FILTER STATUS BAR -->
+            <div class="flex flex-col sm:flex-row items-center justify-between py-3 px-4 bg-ivory rounded-lg mb-8 border border-gold/15 text-xs text-slateCustom">
+                <div id="filter-count-badge">
+                    Showing <strong class="text-navy" id="property-count-num">6</strong> verified properties
+                </div>
+                <div class="flex items-center space-x-4 mt-2 sm:mt-0">
+                    <label for="property-sort-select" class="font-medium text-navy">Sort by:</label>
+                    <select id="property-sort-select" onchange="sortProperties(this.value)" class="bg-white border border-slate-300 rounded px-2 py-1 text-xs text-navy focus:outline-none">
+                        <option value="featured">Featured First</option>
+                        <option value="price-low">Price: Low to High</option>
+                        <option value="price-high">Price: High to Low</option>
+                        <option value="area">Area: Largest First</option>
+                    </select>
+                    <button onclick="resetPropertyFilters()" class="text-gold-dark hover:underline font-medium">Reset</button>
+                </div>
+            </div>
+
+            <!-- PROPERTY CARDS GRID -->
+            <div id="property-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Javascript will populate cards -->
+            </div>
+
+            <!-- EMPTY STATE CONTAINER -->
+            <div id="no-properties-state" class="hidden text-center py-16 px-4 bg-ivory rounded-2xl border border-gold/30">
+                <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-gold/10 flex items-center justify-center text-gold-dark">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+                    </svg>
+                </div>
+                <h3 class="text-xl font-serif text-navy">No Properties Matching These Filters</h3>
+                <p class="text-slateCustom text-sm mt-1 max-w-md mx-auto">
+                    We frequently onboard new plots and residential properties around Tenali. Please reach out directly with your specific location or size criteria.
+                </p>
+                <div class="mt-6 flex justify-center gap-4">
+                    <button onclick="resetPropertyFilters()" class="px-5 py-2.5 bg-navy text-gold text-xs uppercase tracking-wider font-semibold rounded-md">
+                        Reset Filters
+                    </button>
+                    <a href="https://wa.me/919052058083?text=Hi%20Taneesh,%20I%20have%20a%20specific%20property%20requirement%20in%20Tenali" target="_blank" rel="noopener" class="px-5 py-2.5 bg-emerald-700 text-white text-xs uppercase tracking-wider font-semibold rounded-md hover:bg-emerald-800">
+                        WhatsApp Custom Request
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOUNDER & LEADERSHIP SECTION -->
+    <section id="leadership" class="py-24 bg-navy text-ivory relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <span class="text-xs uppercase tracking-[0.3em] font-semibold text-gold-light">Leadership</span>
+                <h2 class="text-3xl sm:text-5xl font-serif text-ivory mt-2">
+                    Guided by Vision & Integrity
+                </h2>
+                <p class="text-ivory/70 mt-3 text-sm sm:text-base">
+                    Direct access to the decision-makers at Vaarshika Enterprises. Reach out anytime for trustworthy consultations.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 max-w-4xl mx-auto">
+                <!-- Founder Card: Taneesh Babu Banala -->
+                <div class="bg-navy-dark rounded-2xl p-8 border border-gold/30 shadow-2xl relative overflow-hidden group hover:border-gold transition-all duration-300">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-gold/5 rounded-bl-full pointer-events-none"></div>
+                    
+                    <div class="flex flex-col sm:flex-row items-center sm:items-start gap-6">
+                        <!-- Profile Avatar / Architectural Monogram -->
+                        <div class="w-24 h-24 rounded-2xl bg-navy-light border-2 border-gold flex items-center justify-center text-gold shadow-lg flex-shrink-0">
+                            <span class="font-display text-2xl font-bold tracking-wider">TB</span>
+                        </div>
+                        
+                        <div class="text-center sm:text-left flex-1">
+                            <span class="px-2.5 py-1 bg-gold/15 text-gold-light rounded text-[10px] font-mono uppercase tracking-widest border border-gold/20">
+                                Founder
+                            </span>
+                            <h3 class="text-2xl font-serif font-bold text-ivory mt-2">
+                                Taneesh Babu Banala
+                            </h3>
+                            <p class="text-xs text-slateCustom uppercase tracking-wider mt-0.5">
+                                Founder • Vaarshika Enterprises
+                            </p>
+                            <p class="text-ivory/70 text-xs sm:text-sm mt-3 leading-relaxed">
+                                Dedicated to upholding transparent real estate advisory and helping clients acquire verified residential plots and homes across Tenali.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Direct Contact Actions -->
+                    <div class="mt-8 pt-6 border-t border-gold/15 grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <a href="tel:+919052058083" class="flex items-center justify-center gap-2 py-3 px-4 rounded-lg bg-navy-light hover:bg-navy-surface text-ivory text-xs font-medium border border-gold/20 hover:border-gold transition-colors">
+                            <svg class="w-4 h-4 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                            </svg>
+                            <span>+91 9052058083</span>
+                        </a>
+
+                        <a href="https://wa.me/919052058083?text=Hello%20Taneesh%20Babu,%20I%20am%20contacting%20you%20via%20vaarshikaenterprises.com" target="_blank" rel="noopener" class="flex items-center justify-center gap-2 py-3 px-4 rounded-lg bg-emerald-950/70 hover:bg-emerald-900 text-emerald-200 text-xs font-medium border border-emerald-700/50 hover:border-emerald-500 transition-colors">
+                            <svg class="w-4 h-4 text-emerald-400" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.694.06-2.127-.534-1.745-.724-2.883-2.49-2.97-2.607-.087-.116-.71-1.025-.71-1.954 0-.928.479-1.385.649-1.572.17-.187.371-.233.495-.233.124 0 .248.001.356.006.115.006.269-.044.421.32.158.378.539 1.314.586 1.41.047.096.078.209.016.333-.062.124-.093.201-.186.31-.093.109-.196.243-.28.327-.093.093-.19.195-.082.381.108.186.48 1.056 1.031 1.547.712.636 1.311.833 1.498.926.186.093.295.078.404-.047.109-.124.466-.543.59-.73.124-.186.248-.155.419-.093.171.062 1.085.512 1.272.605.187.093.31.14.356.218.047.078.047.45-.097.855z"/>
+                            </svg>
+                            <span>WhatsApp Taneesh</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Co-Founder Card: Naveen -->
+                <div class="bg-navy-dark rounded-2xl p-8 border border-gold/30 shadow-2xl relative overflow-hidden group hover:border-gold transition-all duration-300">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-gold/5 rounded-bl-full pointer-events-none"></div>
+                    
+                    <div class="flex flex-col sm:flex-row items-center sm:items-start gap-6">
+                        <!-- Profile Avatar / Architectural Monogram -->
+                        <div class="w-24 h-24 rounded-2xl bg-navy-light border-2 border-gold flex items-center justify-center text-gold shadow-lg flex-shrink-0">
+                            <span class="font-display text-2xl font-bold tracking-wider">NV</span>
+                        </div>
+                        
+                        <div class="text-center sm:text-left flex-1">
+                            <span class="px-2.5 py-1 bg-gold/15 text-gold-light rounded text-[10px] font-mono uppercase tracking-widest border border-gold/20">
+                                Co-Founder
+                            </span>
+                            <h3 class="text-2xl font-serif font-bold text-ivory mt-2">
+                                Naveen
+                            </h3>
+                            <p class="text-xs text-slateCustom uppercase tracking-wider mt-0.5">
+                                Co-Founder • Vaarshika Enterprises
+                            </p>
+                            <p class="text-ivory/70 text-xs sm:text-sm mt-3 leading-relaxed">
+                                Committed to client satisfaction, site visits coordination, and seamless property onboarding throughout the Tenali region.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Direct Contact Actions -->
+                    <div class="mt-8 pt-6 border-t border-gold/15 grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <a href="tel:+918790529335" class="flex items-center justify-center gap-2 py-3 px-4 rounded-lg bg-navy-light hover:bg-navy-surface text-ivory text-xs font-medium border border-gold/20 hover:border-gold transition-colors">
+                            <svg class="w-4 h-4 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                            </svg>
+                            <span>+91 8790529335</span>
+                        </a>
+
+                        <a href="https://wa.me/918790529335?text=Hello%20Naveen,%20I%20am%20contacting%20you%20via%20vaarshikaenterprises.com" target="_blank" rel="noopener" class="flex items-center justify-center gap-2 py-3 px-4 rounded-lg bg-emerald-950/70 hover:bg-emerald-900 text-emerald-200 text-xs font-medium border border-emerald-700/50 hover:border-emerald-500 transition-colors">
+                            <svg class="w-4 h-4 text-emerald-400" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.694.06-2.127-.534-1.745-.724-2.883-2.49-2.97-2.607-.087-.116-.71-1.025-.71-1.954 0-.928.479-1.385.649-1.572.17-.187.371-.233.495-.233.124 0 .248.001.356.006.115.006.269-.044.421.32.158.378.539 1.314.586 1.41.047.096.078.209.016.333-.062.124-.093.201-.186.31-.093.109-.196.243-.28.327-.093.093-.19.195-.082.381.108.186.48 1.056 1.031 1.547.712.636 1.311.833 1.498.926.186.093.295.078.404-.047.109-.124.466-.543.59-.73.124-.186.248-.155.419-.093.171.062 1.085.512 1.272.605.187.093.31.14.356.218.047.078.047.45-.097.855z"/>
+                            </svg>
+                            <span>WhatsApp Naveen</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INTERACTIVE LOCAL UTILITY: ANDHRA PRADESH PLOT MEASUREMENT CONVERTER -->
+    <section class="py-16 bg-ivory-muted/60 border-b border-gold/20">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white rounded-2xl p-6 sm:p-8 shadow-xl border border-gold/30">
+                <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 mb-6">
+                    <div>
+                        <span class="text-xs uppercase tracking-widest text-gold-dark font-semibold">Practical Buyer Utility</span>
+                        <h3 class="text-xl sm:text-2xl font-serif text-navy">Andhra Pradesh Plot Area Calculator</h3>
+                        <p class="text-xs text-slateCustom mt-1">Convert instantly between Sq. Yards (Gajalu), Cents, Ankanams, and Sq. Feet.</p>
+                    </div>
+                    <span class="px-3 py-1 bg-gold/10 text-gold-dark text-xs font-mono rounded-full border border-gold/20">
+                        Tenali Real Estate Standards
+                    </span>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div>
+                        <label class="block text-xs font-semibold text-slateCustom mb-1">Sq. Yards (గజాలు)</label>
+                        <input type="number" id="calc-sqyards" oninput="convertPlotUnits('sqyards', this.value)" placeholder="e.g. 200" class="w-full bg-ivory border border-slate-300 rounded-lg p-2.5 text-sm font-semibold text-navy focus:border-gold focus:outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slateCustom mb-1">Cents (సెంట్లు)</label>
+                        <input type="number" id="calc-cents" oninput="convertPlotUnits('cents', this.value)" placeholder="e.g. 4.13" class="w-full bg-ivory border border-slate-300 rounded-lg p-2.5 text-sm font-semibold text-navy focus:border-gold focus:outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slateCustom mb-1">Square Feet (Sq. Ft)</label>
+                        <input type="number" id="calc-sqft" oninput="convertPlotUnits('sqft', this.value)" placeholder="e.g. 1800" class="w-full bg-ivory border border-slate-300 rounded-lg p-2.5 text-sm font-semibold text-navy focus:border-gold focus:outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slateCustom mb-1">Ankanams (అంకణాలు)</label>
+                        <input type="number" id="calc-ankanam" oninput="convertPlotUnits('ankanam', this.value)" placeholder="e.g. 25" class="w-full bg-ivory border border-slate-300 rounded-lg p-2.5 text-sm font-semibold text-navy focus:border-gold focus:outline-none">
+                    </div>
+                </div>
+                <div class="mt-4 pt-4 border-t border-slate-100 flex justify-between items-center text-[11px] text-slateCustom font-mono">
+                    <span>1 Cent = 48.4 Sq. Yards = 435.6 Sq. Ft</span>
+                    <span>1 Ankanam = 8 Sq. Yards = 72 Sq. Ft</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES SECTION -->
+    <section id="services" class="py-24 bg-ivory">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-xs uppercase tracking-[0.3em] font-semibold text-gold-dark">Services & Support</span>
+                <h2 class="text-3xl sm:text-5xl font-serif text-navy mt-2">
+                    Comprehensive Property Solutions
+                </h2>
+                <p class="text-slateCustom mt-3 text-sm sm:text-base">
+                    Tailored guidance designed around your investment comfort and family aspirations.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Service 1 -->
+                <div class="bg-white p-8 rounded-2xl border border-gold/20 shadow-sm hover:shadow-xl hover:border-gold transition-all duration-300 group">
+                    <div class="w-12 h-12 rounded-xl bg-gold/15 text-gold-dark flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/>
+                        </svg>
+                    </div>
+                    <h3 class="font-display font-semibold text-navy text-lg mb-2">Residential Plot Sourcing</h3>
+                    <p class="text-slateCustom text-sm leading-relaxed">
+                        Identification of well-connected layout plots with clear access roads, proper demarcation, and promising residential growth in Tenali.
+                    </p>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="bg-white p-8 rounded-2xl border border-gold/20 shadow-sm hover:shadow-xl hover:border-gold transition-all duration-300 group">
+                    <div class="w-12 h-12 rounded-xl bg-gold/15 text-gold-dark flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+                        </svg>
+                    </div>
+                    <h3 class="font-display font-semibold text-navy text-lg mb-2">Independent Homes & Villas</h3>
+                    <p class="text-slateCustom text-sm leading-relaxed">
+                        Consultation on newly constructed homes, individual houses, and architectural properties suited to your family’s budget.
+                    </p>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="bg-white p-8 rounded-2xl border border-gold/20 shadow-sm hover:shadow-xl hover:border-gold transition-all duration-300 group">
+                    <div class="w-12 h-12 rounded-xl bg-gold/15 text-gold-dark flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                    </div>
+                    <h3 class="font-display font-semibold text-navy text-lg mb-2">Land & Agricultural Assets</h3>
+                    <p class="text-slateCustom text-sm leading-relaxed">
+                        Exploration of strategic long-term land parcels along active highway belts for value appreciation and estate development.
+                    </p>
+                </div>
+
+                <!-- Service 4 -->
+                <div class="bg-white p-8 rounded-2xl border border-gold/20 shadow-sm hover:shadow-xl hover:border-gold transition-all duration-300 group">
+                    <div class="w-12 h-12 rounded-xl bg-gold/15 text-gold-dark flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                        </svg>
+                    </div>
+                    <h3 class="font-display font-semibold text-navy text-lg mb-2">Due Diligence Guidance</h3>
+                    <p class="text-slateCustom text-sm leading-relaxed">
+                        Assisting prospective purchasers in gathering survey numbers, link documents, and town planning records for independent verification.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHY CHOOSE US SECTION -->
+    <section id="why-us" class="py-24 bg-navy text-ivory relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-xs uppercase tracking-[0.3em] font-semibold text-gold-light">Our Philosophy</span>
+                <h2 class="text-3xl sm:text-5xl font-serif text-ivory mt-2">
+                    Why Choose Vaarshika Enterprises
+                </h2>
+                <p class="text-ivory/70 mt-3 text-sm sm:text-base">
+                    Founded on clear principles rather than inflated marketing promises.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="p-6 rounded-xl bg-navy-dark border border-gold/20">
+                    <div class="text-gold text-lg font-mono mb-2">01 //</div>
+                    <h3 class="font-display font-semibold text-ivory text-base mb-2">Customer-First Guidance</h3>
+                    <p class="text-ivory/70 text-xs sm:text-sm leading-relaxed">
+                        We prioritize your budget parameters and genuine needs rather than pushing unsuitable or speculative options.
+                    </p>
+                </div>
+
+                <div class="p-6 rounded-xl bg-navy-dark border border-gold/20">
+                    <div class="text-gold text-lg font-mono mb-2">02 //</div>
+                    <h3 class="font-display font-semibold text-ivory text-base mb-2">Clear & Direct Communication</h3>
+                    <p class="text-ivory/70 text-xs sm:text-sm leading-relaxed">
+                        Prompt answers, realistic pricing conversations, and transparent disclosure of property dimensions and location factors.
+                    </p>
+                </div>
+
+                <div class="p-6 rounded-xl bg-navy-dark border border-gold/20">
+                    <div class="text-gold text-lg font-mono mb-2">03 //</div>
+                    <h3 class="font-display font-semibold text-ivory text-base mb-2">Property Discovery Support</h3>
+                    <p class="text-ivory/70 text-xs sm:text-sm leading-relaxed">
+                        Organized, assisted site visits around Tenali with thorough ground inspection at times convenient for you and your family.
+                    </p>
+                </div>
+
+                <div class="p-6 rounded-xl bg-navy-dark border border-gold/20">
+                    <div class="text-gold text-lg font-mono mb-2">04 //</div>
+                    <h3 class="font-display font-semibold text-ivory text-base mb-2">Personalised Assistance</h3>
+                    <p class="text-ivory/70 text-xs sm:text-sm leading-relaxed">
+                        Direct interaction with founders Taneesh Babu and Naveen, ensuring customized attention at every phase.
+                    </p>
+                </div>
+
+                <div class="p-6 rounded-xl bg-navy-dark border border-gold/20">
+                    <div class="text-gold text-lg font-mono mb-2">05 //</div>
+                    <h3 class="font-display font-semibold text-ivory text-base mb-2">Convenient Enquiries</h3>
+                    <p class="text-ivory/70 text-xs sm:text-sm leading-relaxed">
+                        Direct instant WhatsApp and direct phone access without cumbersome middle-agents or automated call-center delays.
+                    </p>
+                </div>
+
+                <div class="p-6 rounded-xl bg-navy-dark border border-gold/20">
+                    <div class="text-gold text-lg font-mono mb-2">06 //</div>
+                    <h3 class="font-display font-semibold text-ivory text-base mb-2">Truthful Transparency</h3>
+                    <p class="text-ivory/70 text-xs sm:text-sm leading-relaxed">
+                        We avoid unrealistic return promises. We encourage every customer to conduct their independent legal due diligence.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HOW IT WORKS SECTION -->
+    <section class="py-24 bg-white border-b border-gold/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-xs uppercase tracking-[0.3em] font-semibold text-gold-dark">The Process</span>
+                <h2 class="text-3xl sm:text-5xl font-serif text-navy mt-2">
+                    How It Works
+                </h2>
+                <p class="text-slateCustom mt-3 text-sm sm:text-base">
+                    A streamlined, four-step journey to finding the right property.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 relative">
+                <!-- Step 1 -->
+                <div class="text-center md:text-left relative">
+                    <div class="w-14 h-14 rounded-2xl bg-navy text-gold font-display font-bold text-xl flex items-center justify-center mx-auto md:mx-0 shadow-lg mb-4">
+                        01
+                    </div>
+                    <h4 class="font-display font-semibold text-navy text-base uppercase tracking-wide">Share Requirements</h4>
+                    <p class="text-slateCustom text-xs sm:text-sm mt-2 leading-relaxed">
+                        Tell us your intended property type, preferred area around Tenali, and your target budget through WhatsApp or call.
+                    </p>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="text-center md:text-left relative">
+                    <div class="w-14 h-14 rounded-2xl bg-navy text-gold font-display font-bold text-xl flex items-center justify-center mx-auto md:mx-0 shadow-lg mb-4">
+                        02
+                    </div>
+                    <h4 class="font-display font-semibold text-navy text-base uppercase tracking-wide">Explore Properties</h4>
+                    <p class="text-slateCustom text-xs sm:text-sm mt-2 leading-relaxed">
+                        Review matching layouts, plot dimensions, or house specifications that align precisely with your search criteria.
+                    </p>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="text-center md:text-left relative">
+                    <div class="w-14 h-14 rounded-2xl bg-navy text-gold font-display font-bold text-xl flex items-center justify-center mx-auto md:mx-0 shadow-lg mb-4">
+                        03
+                    </div>
+                    <h4 class="font-display font-semibold text-navy text-base uppercase tracking-wide">Connect & Visit</h4>
+                    <p class="text-slateCustom text-xs sm:text-sm mt-2 leading-relaxed">
+                        Coordinate an in-person physical site walkthrough with Taneesh or Naveen to observe ground realities and road connectivity.
+                    </p>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="text-center md:text-left relative">
+                    <div class="w-14 h-14 rounded-2xl bg-navy text-gold font-display font-bold text-xl flex items-center justify-center mx-auto md:mx-0 shadow-lg mb-4">
+                        04
+                    </div>
+                    <h4 class="font-display font-semibold text-navy text-base uppercase tracking-wide">Proceed Diligently</h4>
+                    <p class="text-slateCustom text-xs sm:text-sm mt-2 leading-relaxed">
+                        Inspect title copies, obtain your lawyer's verification, and finalize your purchase with peace of mind.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FREQUENTLY ASKED QUESTIONS SECTION -->
+    <section class="py-24 bg-ivory">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <span class="text-xs uppercase tracking-[0.3em] font-semibold text-gold-dark">Clarity & Answers</span>
+                <h2 class="text-3xl sm:text-5xl font-serif text-navy mt-2">
+                    Frequently Asked Questions
+                </h2>
+                <p class="text-slateCustom mt-3 text-sm">
+                    Common enquiries regarding properties, site visits, and transactions in Tenali.
+                </p>
+            </div>
+
+            <div class="space-y-4" id="faq-accordion">
+                <!-- Item 1 -->
+                <div class="bg-white rounded-xl border border-gold/20 overflow-hidden shadow-sm">
+                    <button onclick="toggleFaq(this)" class="w-full text-left px-6 py-5 flex items-center justify-between font-display font-semibold text-navy text-sm md:text-base hover:text-gold-dark transition-colors">
+                        <span>Where are your primary properties located?</span>
+                        <span class="faq-icon text-gold text-xl font-mono">+</span>
+                    </button>
+                    <div class="faq-content hidden px-6 pb-6 text-xs sm:text-sm text-slateCustom leading-relaxed border-t border-slate-100 pt-4">
+                        Our primary focus is within Tenali town and its expanding arterial belts—including the Nandivelugu Road corridor, Chenchupet, Morrispet, and the Tenali-Guntur connecting highways in Andhra Pradesh.
+                    </div>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="bg-white rounded-xl border border-gold/20 overflow-hidden shadow-sm">
+                    <button onclick="toggleFaq(this)" class="w-full text-left px-6 py-5 flex items-center justify-between font-display font-semibold text-navy text-sm md:text-base hover:text-gold-dark transition-colors">
+                        <span>How can I schedule a physical site visit?</span>
+                        <span class="faq-icon text-gold text-xl font-mono">+</span>
+                    </button>
+                    <div class="faq-content hidden px-6 pb-6 text-xs sm:text-sm text-slateCustom leading-relaxed border-t border-slate-100 pt-4">
+                        Simply contact our team via phone or WhatsApp. Let us know the property title or your preferred dates, and Founder Taneesh Babu or Co-Founder Naveen will arrange a convenient personal walkthrough.
+                    </div>
+                </div>
+
+                <!-- Item 3 -->
+                <div class="bg-white rounded-xl border border-gold/20 overflow-hidden shadow-sm">
+                    <button onclick="toggleFaq(this)" class="w-full text-left px-6 py-5 flex items-center justify-between font-display font-semibold text-navy text-sm md:text-base hover:text-gold-dark transition-colors">
+                        <span>Do you provide copies of documents for legal verification?</span>
+                        <span class="faq-icon text-gold text-xl font-mono">+</span>
+                    </button>
+                    <div class="faq-content hidden px-6 pb-6 text-xs sm:text-sm text-slateCustom leading-relaxed border-t border-slate-100 pt-4">
+                        Yes. For shortlisted properties, we facilitate access to necessary property document copies so that you and your legal advisor can conduct full title verification before making any financial commitment.
+                    </div>
+                </div>
+
+                <!-- Item 4 -->
+                <div class="bg-white rounded-xl border border-gold/20 overflow-hidden shadow-sm">
+                    <button onclick="toggleFaq(this)" class="w-full text-left px-6 py-5 flex items-center justify-between font-display font-semibold text-navy text-sm md:text-base hover:text-gold-dark transition-colors">
+                        <span>Are the prices listed on this website final?</span>
+                        <span class="faq-icon text-gold text-xl font-mono">+</span>
+                    </button>
+                    <div class="faq-content hidden px-6 pb-6 text-xs sm:text-sm text-slateCustom leading-relaxed border-t border-slate-100 pt-4">
+                        The listings on this website contain representative demo estimates and guide ranges. Exact pricing depends on road-facing width, corner plot premiums, current market status, and direct discussions with our team.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT & ENQUIRY SECTION -->
+    <section id="contact" class="py-24 bg-white relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                <!-- Contact Details Column -->
+                <div class="lg:col-span-5 flex flex-col justify-between">
+                    <div>
+                        <span class="text-xs uppercase tracking-[0.3em] font-semibold text-gold-dark">Direct Consultation</span>
+                        <h2 class="text-3xl sm:text-5xl font-serif text-navy mt-2">
+                            Connect With Our Main Branch
+                        </h2>
+                        <p class="text-slateCustom mt-4 text-sm sm:text-base leading-relaxed">
+                            Have questions regarding a plot, house, or general real estate query in Tenali? Reach out directly to our leadership.
+                        </p>
+
+                        <!-- Verified Branch Location Box -->
+                        <div class="mt-8 p-6 bg-ivory rounded-xl border border-gold/30">
+                            <h4 class="font-display font-bold text-navy text-sm uppercase tracking-wider flex items-center gap-2">
+                                <svg class="w-4 h-4 text-gold-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                                </svg>
+                                VAARSHIKA ENTERPRISES — Tenali Main Branch
+                            </h4>
+                            <p class="text-slateCustom text-xs sm:text-sm mt-2">
+                                Tenali Main Branch, Tenali<br>
+                                Andhra Pradesh, India
+                            </p>
+                            <p class="text-[11px] font-mono text-slateCustom/80 mt-2">
+                                Official Web: https://vaarshikaenterprises.com
+                            </p>
+                        </div>
+
+                        <!-- Direct Leadership Contact Blocks -->
+                        <div class="mt-6 space-y-4">
+                            <!-- Taneesh Babu -->
+                            <div class="p-4 rounded-xl border border-slate-200 hover:border-gold transition-colors flex items-center justify-between">
+                                <div>
+                                    <p class="text-xs uppercase tracking-wider font-semibold text-navy">Taneesh Babu Banala</p>
+                                    <p class="text-[11px] text-slateCustom">Founder</p>
+                                    <a href="tel:+919052058083" class="text-xs font-mono font-bold text-navy hover:text-gold-dark mt-1 inline-block">
+                                        +91 9052058083
+                                    </a>
+                                </div>
+                                <div class="flex gap-2">
+                                    <a href="tel:+919052058083" title="Call" class="p-2.5 rounded-lg bg-navy text-gold hover:bg-gold hover:text-navy transition-colors">
+                                        📞
+                                    </a>
+                                    <a href="https://wa.me/919052058083?text=Hi%20Taneesh,%20I%20am%20inquiring%20about%20properties%20via%20vaarshikaenterprises.com" target="_blank" rel="noopener" title="WhatsApp" class="p-2.5 rounded-lg bg-emerald-700 text-white hover:bg-emerald-800 transition-colors">
+                                        💬
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- Naveen -->
+                            <div class="p-4 rounded-xl border border-slate-200 hover:border-gold transition-colors flex items-center justify-between">
+                                <div>
+                                    <p class="text-xs uppercase tracking-wider font-semibold text-navy">Naveen</p>
+                                    <p class="text-[11px] text-slateCustom">Co-Founder</p>
+                                    <a href="tel:+918790529335" class="text-xs font-mono font-bold text-navy hover:text-gold-dark mt-1 inline-block">
+                                        +91 8790529335
+                                    </a>
+                                </div>
+                                <div class="flex gap-2">
+                                    <a href="tel:+918790529335" title="Call" class="p-2.5 rounded-lg bg-navy text-gold hover:bg-gold hover:text-navy transition-colors">
+                                        📞
+                                    </a>
+                                    <a href="https://wa.me/918790529335?text=Hi%20Naveen,%20I%20am%20inquiring%20about%20properties%20via%20vaarshikaenterprises.com" target="_blank" rel="noopener" title="WhatsApp" class="p-2.5 rounded-lg bg-emerald-700 text-white hover:bg-emerald-800 transition-colors">
+                                        💬
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Professional Enquiry Form Column -->
+                <div class="lg:col-span-7">
+                    <div class="bg-ivory p-8 sm:p-10 rounded-2xl border border-gold/30 shadow-xl">
+                        <div class="mb-6">
+                            <h3 class="text-2xl font-serif text-navy">Property Enquiry Form</h3>
+                            <p class="text-xs text-slateCustom mt-1">
+                                Complete your requirements below. This connects you directly to our verified advisory desk.
+                            </p>
+                        </div>
+
+                        <form id="property-enquiry-form" onsubmit="handleEnquirySubmit(event)" class="space-y-4">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div>
+                                    <label for="form-name" class="block text-xs font-semibold uppercase tracking-wider text-navy mb-1">
+                                        Full Name <span class="text-rose-600">*</span>
+                                    </label>
+                                    <input type="text" id="form-name" required placeholder="e.g. Ramesh Varma" class="w-full bg-white border border-slate-300 rounded-lg px-3.5 py-2.5 text-sm text-navy focus:border-gold focus:outline-none">
+                                </div>
+
+                                <div>
+                                    <label for="form-phone" class="block text-xs font-semibold uppercase tracking-wider text-navy mb-1">
+                                        Phone Number <span class="text-rose-600">*</span>
+                                    </label>
+                                    <input type="tel" id="form-phone" required pattern="[0-9+ -]{10,14}" placeholder="e.g. 9876543210" class="w-full bg-white border border-slate-300 rounded-lg px-3.5 py-2.5 text-sm text-navy focus:border-gold focus:outline-none">
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div>
+                                    <label for="form-email" class="block text-xs font-semibold uppercase tracking-wider text-navy mb-1">
+                                        Email Address <span class="text-slateCustom text-[10px] font-normal">(Optional)</span>
+                                    </label>
+                                    <input type="email" id="form-email" placeholder="name@example.com" class="w-full bg-white border border-slate-300 rounded-lg px-3.5 py-2.5 text-sm text-navy focus:border-gold focus:outline-none">
+                                </div>
+
+                                <div>
+                                    <label for="form-type" class="block text-xs font-semibold uppercase tracking-wider text-navy mb-1">
+                                        Interested Property Type <span class="text-rose-600">*</span>
+                                    </label>
+                                    <select id="form-type" required class="w-full bg-white border border-slate-300 rounded-lg px-3.5 py-2.5 text-sm text-navy focus:border-gold focus:outline-none">
+                                        <option value="">Select Property Type</option>
+                                        <option value="Residential Plots">Residential Plots</option>
+                                        <option value="Independent Houses">Independent Houses</option>
+                                        <option value="Villas">Villas</option>
+                                        <option value="Commercial Land">Commercial Land</option>
+                                        <option value="General Investment">General Investment Inquiry</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div>
+                                    <label for="form-location" class="block text-xs font-semibold uppercase tracking-wider text-navy mb-1">
+                                        Preferred Location
+                                    </label>
+                                    <input type="text" id="form-location" placeholder="e.g. Nandivelugu Road / Tenali Town" class="w-full bg-white border border-slate-300 rounded-lg px-3.5 py-2.5 text-sm text-navy focus:border-gold focus:outline-none">
+                                </div>
+
+                                <div>
+                                    <label for="form-budget" class="block text-xs font-semibold uppercase tracking-wider text-navy mb-1">
+                                        Budget Range <span class="text-slateCustom text-[10px] font-normal">(Optional)</span>
+                                    </label>
+                                    <input type="text" id="form-budget" placeholder="e.g. ₹25 Lakhs - ₹40 Lakhs" class="w-full bg-white border border-slate-300 rounded-lg px-3.5 py-2.5 text-sm text-navy focus:border-gold focus:outline-none">
+                                </div>
+                            </div>
+
+                            <div>
+                                <label for="form-message" class="block text-xs font-semibold uppercase tracking-wider text-navy mb-1">
+                                    Message or Specific Questions
+                                </label>
+                                <textarea id="form-message" rows="3" placeholder="Please mention any plot dimensions, facing direction, or site visit timing you prefer..." class="w-full bg-white border border-slate-300 rounded-lg px-3.5 py-2.5 text-sm text-navy focus:border-gold focus:outline-none"></textarea>
+                            </div>
+
+                            <!-- Backend Integration & Safety Notice -->
+                            <div class="p-3 bg-amber-50 rounded-lg border border-amber-200 text-[11px] text-amber-900 leading-tight">
+                                🔒 <strong>Secure Routing:</strong> For immediate assistance, this form creates an instant direct connection and pre-filled WhatsApp link to founder Taneesh Babu Banala.
+                            </div>
+
+                            <button type="submit" id="submit-enquiry-btn" class="w-full bg-navy hover:bg-navy-light text-gold font-semibold py-3.5 px-6 rounded-lg text-xs uppercase tracking-widest transition-all duration-300 shadow-md hover:shadow-xl flex items-center justify-center space-x-2">
+                                <span>Submit Property Enquiry</span>
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                                </svg>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FINAL CALL TO ACTION -->
+    <section class="py-20 bg-navy-dark text-ivory text-center relative overflow-hidden border-t border-gold/20">
+        <div class="max-w-4xl mx-auto px-4 relative z-10">
+            <h2 class="text-3xl sm:text-5xl font-serif text-ivory mb-4">
+                Let's Find Your Next Opportunity.
+            </h2>
+            <p class="text-ivory/70 text-sm sm:text-base max-w-xl mx-auto mb-8">
+                Connect with Taneesh Babu and Naveen at Vaarshika Enterprises for clear, customer-first real estate guidance in Tenali.
+            </p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="tel:+919052058083" class="px-8 py-3.5 bg-gold text-navy font-semibold text-xs uppercase tracking-widest rounded-md hover:bg-gold-light transition-all shadow-lg">
+                    Talk to Our Team
+                </a>
+                <a href="#properties" class="px-8 py-3.5 border border-gold/40 text-ivory hover:text-gold hover:border-gold text-xs uppercase tracking-widest rounded-md transition-all">
+                    Explore Properties
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROPERTY DETAILS MODAL -->
+    <div id="property-detail-modal" class="fixed inset-0 z-50 hidden bg-navy/80 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto" role="dialog" aria-modal="true" aria-labelledby="modal-prop-title">
+        <div class="bg-white rounded-2xl max-w-3xl w-full overflow-hidden shadow-2xl border border-gold/30 my-8">
+            <div class="relative h-64 sm:h-80 bg-navy overflow-hidden">
+                <img id="modal-prop-img" src="" alt="Property Visual" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-navy via-transparent to-black/30"></div>
+                
+                <button onclick="closePropertyModal()" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-black/60 text-white hover:bg-gold hover:text-navy transition-colors flex items-center justify-center text-sm">
+                    ✕
+                </button>
+
+                <div class="absolute bottom-4 left-6 right-6 flex justify-between items-end">
+                    <div>
+                        <span id="modal-prop-type-badge" class="px-2.5 py-1 bg-gold text-navy text-[10px] font-mono font-bold uppercase rounded"></span>
+                        <h3 id="modal-prop-title" class="text-2xl font-serif text-white font-bold mt-1"></h3>
+                        <p id="modal-prop-location" class="text-xs text-ivory/80 flex items-center gap-1 mt-0.5"></p>
+                    </div>
+                    <div class="text-right">
+                        <span class="text-[10px] uppercase text-gold-light block font-mono">Guide Price</span>
+                        <span id="modal-prop-price" class="text-xl font-display font-bold text-white"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="p-6 sm:p-8 space-y-6">
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 p-4 bg-ivory rounded-xl border border-gold/15 text-center">
+                    <div>
+                        <span class="text-[10px] text-slateCustom uppercase tracking-wider block">Plot / Built Area</span>
+                        <span id="modal-prop-area" class="font-display font-semibold text-navy text-sm"></span>
+                    </div>
+                    <div>
+                        <span class="text-[10px] text-slateCustom uppercase tracking-wider block">Facing</span>
+                        <span id="modal-prop-facing" class="font-display font-semibold text-navy text-sm"></span>
+                    </div>
+                    <div>
+                        <span class="text-[10px] text-slateCustom uppercase tracking-wider block">Road Width</span>
+                        <span id="modal-prop-road" class="font-display font-semibold text-navy text-sm"></span>
+                    </div>
+                    <div>
+                        <span class="text-[10px] text-slateCustom uppercase tracking-wider block">Status</span>
+                        <span id="modal-prop-status" class="font-display font-semibold text-emerald-700 text-sm"></span>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="text-xs font-semibold uppercase tracking-wider text-navy mb-2">Property Overview</h4>
+                    <p id="modal-prop-desc" class="text-sm text-slateCustom leading-relaxed"></p>
+                </div>
+
+                <div class="p-4 bg-slate-50 rounded-lg text-xs text-slateCustom border-l-4 border-gold">
+                    <strong>Buyer Verification Notice:</strong> This entry is part of Vaarshika Enterprises’ verified demonstration catalogue. We invite you to schedule a site walkthrough with Founder Taneesh Babu or Co-Founder Naveen.
+                </div>
+
+                <div class="flex flex-col sm:flex-row gap-3 pt-4 border-t border-slate-100">
+                    <a id="modal-whatsapp-link" href="#" target="_blank" rel="noopener" class="flex-1 py-3 px-4 rounded-lg bg-emerald-700 text-white font-semibold text-xs uppercase tracking-wider text-center hover:bg-emerald-800 transition-colors flex items-center justify-center gap-2">
+                        <span>💬 Enquire via WhatsApp</span>
+                    </a>
+                    <a id="modal-phone-link" href="tel:+919052058083" class="flex-1 py-3 px-4 rounded-lg bg-navy text-gold font-semibold text-xs uppercase tracking-wider text-center hover:bg-navy-light transition-colors flex items-center justify-center gap-2">
+                        <span>📞 Call Founder Directly</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ENQUIRY SUBMISSION CONFIRMATION MODAL -->
+    <div id="enquiry-success-modal" class="fixed inset-0 z-50 hidden bg-navy/85 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-md w-full p-8 text-center shadow-2xl border border-gold/40">
+            <div class="w-14 h-14 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto mb-4 text-2xl">
+                ✓
+            </div>
+            <h3 class="text-2xl font-serif text-navy">Enquiry Generated</h3>
+            <p id="success-modal-msg" class="text-xs text-slateCustom mt-2 leading-relaxed">
+                Thank you! Your requirements have been formatted. Click below to continue directly to WhatsApp with Founder Taneesh Babu.
+            </p>
+            <div class="mt-6 flex flex-col gap-3">
+                <a id="success-whatsapp-btn" href="#" target="_blank" rel="noopener" class="py-3 px-4 bg-emerald-700 text-white font-semibold text-xs uppercase tracking-wider rounded-lg hover:bg-emerald-800 transition-colors">
+                    Continue to WhatsApp Chat
+                </a>
+                <button onclick="closeSuccessModal()" class="py-2.5 px-4 text-xs text-slateCustom hover:text-navy">
+                    Close Window
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- DEPLOYMENT GUIDE MODAL -->
+    <div id="deployment-guide-modal" class="fixed inset-0 z-50 hidden bg-navy/90 backdrop-blur-md flex items-center justify-center p-4 overflow-y-auto">
+        <div class="bg-white rounded-2xl max-w-3xl w-full p-8 shadow-2xl border border-gold/40 my-8 max-h-[85vh] overflow-y-auto">
+            <div class="flex justify-between items-start pb-4 border-b border-slate-200">
+                <div>
+                    <span class="text-xs uppercase tracking-widest text-gold-dark font-mono font-bold">Production Setup</span>
+                    <h3 class="text-2xl font-serif text-navy">Domain & Deployment Instructions</h3>
+                    <p class="text-xs text-slateCustom">Target Domain: https://vaarshikaenterprises.com</p>
+                </div>
+                <button onclick="toggleDeploymentModal(false)" class="text-slate-400 hover:text-navy text-xl">✕</button>
+            </div>
+
+            <div class="space-y-6 mt-6 text-xs text-slateCustom leading-relaxed">
+                <div>
+                    <h4 class="font-display font-bold text-navy text-sm uppercase">1. How to Deploy (Vercel / Netlify / Cloudflare Pages)</h4>
+                    <p class="mt-1">
+                        This website is engineered as a zero-dependency, ultra-fast single file. You can simply upload this <code class="bg-slate-100 p-1 font-mono">index.html</code> directly into any static web host.
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="font-display font-bold text-navy text-sm uppercase">2. DNS Records for vaarshikaenterprises.com</h4>
+                    <div class="bg-slate-900 text-gold-light p-3 rounded font-mono text-[11px] mt-2 space-y-1">
+                        <div>Type: A &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| Name: @ &nbsp;&nbsp;&nbsp;| Value: 76.76.21.21 (or host IP)</div>
+                        <div>Type: CNAME &nbsp;&nbsp;| Name: www &nbsp;| Value: cname.vercel-dns.com</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-6 pt-4 border-t border-slate-200 text-right">
+                <button onclick="toggleDeploymentModal(false)" class="px-5 py-2 bg-navy text-gold rounded-lg text-xs uppercase font-semibold">
+                    Close Guide
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="bg-navy-dark text-ivory/80 pt-16 pb-12 border-t border-gold/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 pb-12 border-b border-gold/15">
+                <!-- Brand Summary -->
+                <div class="lg:col-span-4">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="w-9 h-9 rounded-lg border border-gold/40 bg-navy-light flex items-center justify-center text-gold">
+                            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M3 21h18M5 21V7l7-4 7 4v14M9 10h1m4 0h1m-6 4h1m4 0h1m-4 4h2" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <span class="font-display text-lg font-bold tracking-wider text-ivory">
+                            VAARSHIKA ENTERPRISES
+                        </span>
+                    </div>
+                    <p class="font-serif italic text-gold-light text-sm mb-3">
+                        “Building Trust. Creating Futures.”
+                    </p>
+                    <p class="text-xs text-slateCustom leading-relaxed">
+                        A customer-centric real estate venture based in Tenali, Andhra Pradesh. Specializing in residential plot discovery, individual houses, and reliable investment advisory.
+                    </p>
+                    <div class="mt-4 flex gap-2">
+                        <button onclick="toggleDeploymentModal(true)" class="text-[10px] font-mono text-gold-light/60 hover:text-gold border border-gold/20 px-2.5 py-1 rounded">
+                            ⚙ Deployment Guide
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Navigation Quick Links -->
+                <div class="lg:col-span-2">
+                    <h4 class="font-display text-xs uppercase tracking-widest text-gold-light mb-4 font-semibold">Navigation</h4>
+                    <ul class="space-y-2 text-xs">
+                        <li><a href="#home" class="hover:text-gold transition-colors">Home</a></li>
+                        <li><a href="#about" class="hover:text-gold transition-colors">About Us</a></li>
+                        <li><a href="#properties" class="hover:text-gold transition-colors">Properties</a></li>
+                        <li><a href="#services" class="hover:text-gold transition-colors">Our Services</a></li>
+                        <li><a href="#leadership" class="hover:text-gold transition-colors">Leadership</a></li>
+                        <li><a href="#why-us" class="hover:text-gold transition-colors">Why Choose Us</a></li>
+                        <li><a href="#contact" class="hover:text-gold transition-colors">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <!-- Direct Contacts -->
+                <div class="lg:col-span-3">
+                    <h4 class="font-display text-xs uppercase tracking-widest text-gold-light mb-4 font-semibold">Direct Contacts</h4>
+                    <div class="space-y-3 text-xs">
+                        <div>
+                            <span class="text-slateCustom block text-[10px] uppercase">Founder</span>
+                            <span class="font-semibold text-ivory">Taneesh Babu Banala</span>
+                            <a href="tel:+919052058083" class="block font-mono text-gold-light hover:underline mt-0.5">+91 9052058083</a>
+                        </div>
+                        <div>
+                            <span class="text-slateCustom block text-[10px] uppercase">Co-Founder</span>
+                            <span class="font-semibold text-ivory">Naveen</span>
+                            <a href="tel:+918790529335" class="block font-mono text-gold-light hover:underline mt-0.5">+91 8790529335</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Branch Location -->
+                <div class="lg:col-span-3">
+                    <h4 class="font-display text-xs uppercase tracking-widest text-gold-light mb-4 font-semibold">Main Branch</h4>
+                    <p class="text-xs text-slateCustom leading-relaxed">
+                        VAARSHIKA ENTERPRISES<br>
+                        Tenali Main Branch<br>
+                        Tenali, Andhra Pradesh, India
+                    </p>
+                    <p class="text-[11px] text-slateCustom mt-3 font-mono">
+                        Official Domain:<br>
+                        <span class="text-gold">https://vaarshikaenterprises.com</span>
+                    </p>
+                </div>
+            </div>
+
+            <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-[11px] text-slateCustom">
+                <p>© 2026 VAARSHIKA ENTERPRISES. All rights reserved.</p>
+                <div class="flex space-x-6 mt-4 sm:mt-0">
+                    <a href="#contact" class="hover:text-gold">Enquiries</a>
+                    <a href="javascript:void(0)" onclick="openPrivacyModal()" class="hover:text-gold">Privacy Policy</a>
+                    <a href="javascript:void(0)" onclick="openTermsModal()" class="hover:text-gold">Terms of Advisory</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- LEGAL MODAL -->
+    <div id="simple-legal-modal" class="fixed inset-0 z-50 hidden bg-navy/80 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white rounded-xl max-w-lg w-full p-6 text-navy shadow-2xl border border-gold/30">
+            <h4 id="legal-modal-title" class="text-lg font-serif font-bold text-navy mb-2"></h4>
+            <div id="legal-modal-body" class="text-xs text-slateCustom leading-relaxed max-h-60 overflow-y-auto mb-4 space-y-2"></div>
+            <button onclick="document.getElementById('simple-legal-modal').classList.add('hidden')" class="px-4 py-2 bg-navy text-gold text-xs font-semibold rounded">
+                Close
+            </button>
+        </div>
+    </div>
+
+    <script>
+        /* =========================================================================
+           1. PROPERTY CATALOGUE DATA
+           ========================================================================= */
+        const propertiesData = [
+            {
+                id: 'VE-01',
+                title: 'Nandivelugu Corridor Residential Plot',
+                category: 'Residential Plots',
+                location: 'Nandivelugu Road, Tenali',
+                area: '200 Sq. Yards (4.13 Cents)',
+                price: '₹28,00,000 (Approx)',
+                priceNum: 2800000,
+                status: 'Available',
+                facing: 'East Facing',
+                road: '33 Feet BT Road',
+                badge: 'Verified Layout',
+                image: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=1200&auto=format&fit=crop',
+                description: 'Prime residential plot situated in an established growth belt near Nandivelugu Road. Features 33-feet black-top access, clear boundary demarcation, and rapid residential neighborhood development in Tenali.'
+            },
+            {
+                id: 'VE-02',
+                title: 'Independent Modern 3BHK Duplex Home',
+                category: 'Independent Houses',
+                location: 'Tenali Town Center',
+                area: '165 Sq. Yards (2,100 Sft Built)',
+                price: '₹68,00,000',
+                priceNum: 6800000,
+                status: 'Ready to Move',
+                facing: 'North-East Corner',
+                road: '30 Feet Road',
+                badge: 'Duplex Home',
+                image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200&auto=format&fit=crop',
+                description: 'Newly constructed contemporary 3BHK independent home featuring spacious living room, modular kitchen provisions, covered car parking, and peaceful residential environment with prompt access to Tenali schools and markets.'
+            },
+            {
+                id: 'VE-03',
+                title: 'Contemporary Luxury Gated Villa',
+                category: 'Luxury Villas',
+                location: 'Chenchupet Corridor, Tenali',
+                area: '250 Sq. Yards (3,200 Sft Built)',
+                price: '₹1,15,00,000',
+                priceNum: 11500000,
+                status: 'Under Construction',
+                facing: 'East Facing',
+                road: '40 Feet Layout Road',
+                badge: 'Architectural Villa',
+                image: 'https://images.unsplash.com/photo-1613490493576-7fde63acd811?q=80&w=1200&auto=format&fit=crop',
+                description: 'Designed for luxury lifestyle seekers, offering double-height living areas, private terrace garden, solar inverter readiness, and premium architectural detailing within a quiet enclave.'
+            },
+            {
+                id: 'VE-04',
+                title: 'Commercial Land Parcel on Guntur Highway',
+                category: 'Commercial & Land',
+                location: 'Tenali-Guntur Road',
+                area: '500 Sq. Yards (10.3 Cents)',
+                price: 'Contact for Price',
+                priceNum: 9500000,
+                status: 'Direct Title',
+                facing: 'North Facing',
+                road: '60 Feet State Highway',
+                badge: 'Highway Corridor',
+                image: 'https://images.unsplash.com/photo-1524813686514-a57563d77d66?q=80&w=1200&auto=format&fit=crop',
+                description: 'High-visibility highway plot ideal for commercial warehouses, educational institutions, or long-term capital appreciation along the active Tenali-Guntur transit corridor.'
+            },
+            {
+                id: 'VE-05',
+                title: 'Residential Open Plot in Morrispet',
+                category: 'Residential Plots',
+                location: 'Morrispet, Tenali',
+                area: '180 Sq. Yards (3.72 Cents)',
+                price: '₹24,50,000',
+                priceNum: 2450000,
+                status: 'Available',
+                facing: 'West Facing',
+                road: '30 Feet Concrete Road',
+                badge: 'Ready for Construction',
+                image: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=1200&auto=format&fit=crop',
+                description: 'Compact residential plot situated near existing social infrastructure and temples in Morrispet. Excellent choice for families seeking immediate independent home construction.'
+            },
+            {
+                id: 'VE-06',
+                title: 'Strategic Semi-Urban Investment Acreage',
+                category: 'Commercial & Land',
+                location: 'Tenali Rural Outskirts',
+                area: '1.2 Acres (120 Cents)',
+                price: 'Contact for Price',
+                priceNum: 16000000,
+                status: 'Open for Inspection',
+                facing: 'Multi-Directional',
+                road: 'Panchayat Blacktop Road',
+                badge: 'Investment Land',
+                image: 'https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?q=80&w=1200&auto=format&fit=crop',
+                description: 'Fertile and well-bounded land parcel suitable for farm ventures or phased residential subdivision once master plan approvals advance.'
+            }
+        ];
+
+        let currentCategory = 'All';
+        let currentSort = 'featured';
+
+        // Render Property Cards
+        function renderProperties(list) {
+            const container = document.getElementById('property-grid');
+            const emptyState = document.getElementById('no-properties-state');
+            const countElem = document.getElementById('property-count-num');
+
+            if (!container) return;
+
+            if (list.length === 0) {
+                container.innerHTML = '';
+                emptyState.classList.remove('hidden');
+                if (countElem) countElem.innerText = '0';
+                return;
+            }
+
+            emptyState.classList.add('hidden');
+            if (countElem) countElem.innerText = list.length;
+
+            container.innerHTML = list.map(item => `
+                <div class="bg-white rounded-2xl overflow-hidden border border-gold/20 shadow-sm hover:shadow-2xl hover:border-gold transition-all duration-300 flex flex-col group">
+                    <div class="relative h-56 overflow-hidden bg-navy-light">
+                        <img src="${item.image}" alt="${item.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-navy/80 via-transparent to-black/20"></div>
+                        <span class="absolute top-3 left-3 px-3 py-1 bg-navy/80 backdrop-blur-md text-gold text-[10px] font-mono font-semibold uppercase rounded-full border border-gold/30">
+                            ${item.badge}
+                        </span>
+                        <span class="absolute top-3 right-3 px-2.5 py-1 bg-emerald-900/90 text-emerald-300 text-[10px] font-semibold uppercase rounded">
+                            ${item.status}
+                        </span>
+                        <div class="absolute bottom-3 left-4 right-4 flex justify-between items-end text-ivory">
+                            <div>
+                                <span class="text-[10px] text-gold-light uppercase tracking-wider block font-sans">${item.category}</span>
+                                <span class="text-sm font-semibold truncate block">${item.location}</span>
+                            </div>
+                            <span class="text-sm font-display font-bold text-gold-light">${item.price}</span>
+                        </div>
+                    </div>
+
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-serif font-bold text-navy text-lg leading-snug group-hover:text-gold-dark transition-colors">
+                                ${item.title}
+                            </h3>
+                            <div class="mt-3 flex items-center justify-between text-xs text-slateCustom py-2 border-y border-slate-100">
+                                <span>Area: <strong class="text-navy">${item.area}</strong></span>
+                                <span>Facing: <strong class="text-navy">${item.facing}</strong></span>
+                            </div>
+                            <p class="mt-3 text-xs text-slateCustom line-clamp-2 leading-relaxed">
+                                ${item.description}
+                            </p>
+                        </div>
+
+                        <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between gap-2">
+                            <button onclick="openPropertyModal('${item.id}')" class="flex-1 py-2.5 px-3 rounded-lg bg-navy hover:bg-navy-light text-gold text-xs font-semibold uppercase tracking-wider text-center transition-colors">
+                                View Details
+                            </button>
+                            <a href="https://wa.me/919052058083?text=Hello%20Taneesh,%20I%20am%20inquiring%20about%20${encodeURIComponent(item.title)}%20(${item.id})%20on%20Vaarshika%20Enterprises" target="_blank" rel="noopener" class="py-2.5 px-3 rounded-lg bg-emerald-50 hover:bg-emerald-100 text-emerald-800 text-xs font-medium border border-emerald-300 transition-colors flex items-center gap-1" title="Enquire on WhatsApp">
+                                <span>WhatsApp</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function filterProperties(category) {
+            currentCategory = category;
+            document.querySelectorAll('#category-filter-group .filter-btn').forEach(btn => {
+                if (btn.getAttribute('data-cat') === category) {
+                    btn.className = "filter-btn active-filter px-5 py-2 text-xs uppercase tracking-wider font-semibold rounded-full border transition-all duration-200 bg-navy text-gold border-navy shadow-sm";
+                } else {
+                    btn.className = "filter-btn px-5 py-2 text-xs uppercase tracking-wider font-semibold rounded-full border border-slate-200 text-slate-700 hover:border-gold hover:text-gold-dark transition-all duration-200";
+                }
+            });
+            applyFilters();
+        }
+
+        function sortProperties(sortValue) {
+            currentSort = sortValue;
+            applyFilters();
+        }
+
+        function applyFilters() {
+            let filtered = [...propertiesData];
+            if (currentCategory !== 'All') {
+                filtered = filtered.filter(p => p.category === currentCategory);
+            }
+
+            if (currentSort === 'price-low') {
+                filtered.sort((a, b) => a.priceNum - b.priceNum);
+            } else if (currentSort === 'price-high') {
+                filtered.sort((a, b) => b.priceNum - a.priceNum);
+            } else if (currentSort === 'area') {
+                filtered.sort((a, b) => b.title.localeCompare(a.title));
+            }
+            renderProperties(filtered);
+        }
+
+        function resetPropertyFilters() {
+            currentCategory = 'All';
+            currentSort = 'featured';
+            const sortSelect = document.getElementById('property-sort-select');
+            if (sortSelect) sortSelect.value = 'featured';
+            filterProperties('All');
+        }
+
+        function handleHeroSearch(e) {
+            e.preventDefault();
+            const type = document.getElementById('hero-prop-type').value;
+            const loc = document.getElementById('hero-location').value;
+
+            let filtered = [...propertiesData];
+            if (type !== 'all') {
+                filtered = filtered.filter(p => p.category.toLowerCase().includes(type.toLowerCase()));
+            }
+            if (loc !== 'all') {
+                filtered = filtered.filter(p => p.location.toLowerCase().includes(loc.toLowerCase()));
+            }
+
+            renderProperties(filtered);
+            const targetSection = document.getElementById('properties');
+            if (targetSection) {
+                targetSection.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        function openPropertyModal(id) {
+            const item = propertiesData.find(p => p.id === id);
+            if (!item) return;
+
+            document.getElementById('modal-prop-img').src = item.image;
+            document.getElementById('modal-prop-title').innerText = item.title;
+            document.getElementById('modal-prop-location').innerHTML = `📍 ${item.location}`;
+            document.getElementById('modal-prop-type-badge').innerText = item.category;
+            document.getElementById('modal-prop-price').innerText = item.price;
+            document.getElementById('modal-prop-area').innerText = item.area;
+            document.getElementById('modal-prop-facing').innerText = item.facing;
+            document.getElementById('modal-prop-road').innerText = item.road;
+            document.getElementById('modal-prop-status').innerText = item.status;
+            document.getElementById('modal-prop-desc').innerText = item.description;
+
+            const waText = encodeURIComponent(`Hello Taneesh & Naveen, I am interested in ${item.title} (${item.id}) in ${item.location} listed on vaarshikaenterprises.com. Please share further details.`);
+            document.getElementById('modal-whatsapp-link').href = `https://wa.me/919052058083?text=${waText}`;
+
+            document.getElementById('property-detail-modal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closePropertyModal() {
+            document.getElementById('property-detail-modal').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        function convertPlotUnits(source, val) {
+            const num = parseFloat(val);
+            if (isNaN(num) || num <= 0) return;
+
+            let sqYards = 0;
+            if (source === 'sqyards') sqYards = num;
+            if (source === 'cents') sqYards = num * 48.4;
+            if (source === 'sqft') sqYards = num / 9;
+            if (source === 'ankanam') sqYards = num * 8;
+
+            if (source !== 'sqyards') document.getElementById('calc-sqyards').value = (sqYards).toFixed(2);
+            if (source !== 'cents') document.getElementById('calc-cents').value = (sqYards / 48.4).toFixed(2);
+            if (source !== 'sqft') document.getElementById('calc-sqft').value = (sqYards * 9).toFixed(2);
+            if (source !== 'ankanam') document.getElementById('calc-ankanam').value = (sqYards / 8).toFixed(2);
+        }
+
+        function handleEnquirySubmit(e) {
+            e.preventDefault();
+            const name = document.getElementById('form-name').value.trim();
+            const phone = document.getElementById('form-phone').value.trim();
+            const email = document.getElementById('form-email').value.trim();
+            const propType = document.getElementById('form-type').value;
+            const loc = document.getElementById('form-location').value.trim();
+            const budget = document.getElementById('form-budget').value.trim();
+            const msg = document.getElementById('form-message').value.trim();
+
+            if (!name || !phone || !propType) return;
+
+            const btn = document.getElementById('submit-enquiry-btn');
+            btn.innerHTML = `<span>Preparing Connection...</span>`;
+            btn.disabled = true;
+
+            setTimeout(() => {
+                const summaryText = `Hello Taneesh Babu Banala / Naveen,\n\nI submitted an enquiry on https://vaarshikaenterprises.com:\n- Name: ${name}\n- Phone: ${phone}\n- Interested Type: ${propType}\n- Preferred Location: ${loc || 'Tenali'}\n- Budget Range: ${budget || 'Not specified'}\n- Message: ${msg || 'None'}`;
+                
+                const waUrl = `https://wa.me/919052058083?text=${encodeURIComponent(summaryText)}`;
+
+                document.getElementById('success-whatsapp-btn').href = waUrl;
+                document.getElementById('success-modal-msg').innerText = `Thank you, ${name}! Your enquiry for ${propType} in ${loc || 'Tenali'} has been validated. Proceed directly to WhatsApp to speak with Taneesh Babu Banala.`;
+                document.getElementById('enquiry-success-modal').classList.remove('hidden');
+
+                btn.innerHTML = `<span>Submit Property Enquiry</span> <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>`;
+                btn.disabled = false;
+                document.getElementById('property-enquiry-form').reset();
+            }, 500);
+        }
+
+        function closeSuccessModal() {
+            document.getElementById('enquiry-success-modal').classList.add('hidden');
+        }
+
+        function toggleFaq(btn) {
+            const content = btn.nextElementSibling;
+            const icon = btn.querySelector('.faq-icon');
+            const isHidden = content.classList.contains('hidden');
+
+            document.querySelectorAll('#faq-accordion .faq-content').forEach(c => c.classList.add('hidden'));
+            document.querySelectorAll('#faq-accordion .faq-icon').forEach(i => i.innerText = '+');
+
+            if (isHidden) {
+                content.classList.remove('hidden');
+                icon.innerText = '−';
+            }
+        }
+
+        function openPrivacyModal() {
+            document.getElementById('legal-modal-title').innerText = "Privacy Policy";
+            document.getElementById('legal-modal-body').innerHTML = `
+                <p>At Vaarshika Enterprises, respecting visitor privacy is fundamental. We collect personal details exclusively when voluntarily supplied via enquiry forms or WhatsApp communication.</p>
+                <p>We do not sell, rent, or distribute client contact details to third-party telemarketers.</p>
+            `;
+            document.getElementById('simple-legal-modal').classList.remove('hidden');
+        }
+
+        function openTermsModal() {
+            document.getElementById('legal-modal-title').innerText = "Terms of Advisory";
+            document.getElementById('legal-modal-body').innerHTML = `
+                <p>Vaarshika Enterprises acts as an independent real estate advisory in Tenali, Andhra Pradesh.</p>
+                <p>Prospective buyers are urged to inspect physical boundaries and legal encumbrance certificates prior to executing registered deed documents.</p>
+            `;
+            document.getElementById('simple-legal-modal').classList.remove('hidden');
+        }
+
+        function toggleDeploymentModal(show) {
+            const modal = document.getElementById('deployment-guide-modal');
+            if (show) modal.classList.remove('hidden');
+            else modal.classList.add('hidden');
+        }
+
+        /* =========================================================================
+           STREAMING_CHUNK:Initializing 3D Three.js scene and lighting...
+           2. ULTRA-REALISTIC 3D HOUSE CONSTRUCTION ANIMATION ENGINE (NO HUMANS)
+           ========================================================================= */
+        let threeScene = null;
+        let threeCamera = null;
+        let threeRenderer = null;
+        let threeAnimId = null;
+        let animClock = null;
+        let constructionElements = {};
+        let isOrbitingAllowed = false;
+        let isUserDragging = false;
+        let prevMousePos = { x: 0, y: 0 };
+        let orbitAngles = { theta: 0.65, phi: 0.32, radius: 25 };
+
+        const ANIM_DURATION = 13.5; // Smooth cinematic 13.5s sequence
+
+        function initThreeConstructionScene() {
+            const canvas = document.getElementById('three-construction-canvas');
+            const overlay = document.getElementById('intro-overlay');
+            if (!canvas || typeof THREE === 'undefined') {
+                if (overlay) overlay.classList.add('fade-out');
+                return;
+            }
+
+            // Check reduced motion & session memory
+            const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            const hasSeenIntro = sessionStorage.getItem('vaarshika_intro_seen');
+
+            if (prefersReducedMotion || hasSeenIntro) {
+                overlay.classList.add('fade-out');
+                return;
+            }
+
+            const width = window.innerWidth;
+            const height = window.innerHeight;
+
+            threeRenderer = new THREE.WebGLRenderer({
+                canvas: canvas,
+                antialias: true,
+                alpha: false,
+                powerPreference: 'high-performance'
+            });
+            threeRenderer.setSize(width, height);
+            threeRenderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+            threeRenderer.shadowMap.enabled = true;
+            threeRenderer.shadowMap.type = THREE.PCFSoftShadowMap;
+            threeRenderer.toneMapping = THREE.ACESFilmicToneMapping;
+            threeRenderer.toneMappingExposure = 1.15;
+
+            // Warm Early Morning Atmospheric Environment
+            threeScene = new THREE.Scene();
+            threeScene.background = new THREE.Color(0xF4E8D8);
+            threeScene.fog = new THREE.FogExp2(0xF1E2CD, 0.015);
+
+            threeCamera = new THREE.PerspectiveCamera(40, width / height, 0.1, 1000);
+            threeCamera.position.set(18, 5.0, 22);
+
+            // Natural Sunlight & Ambient Global Illumination
+            const hemiLight = new THREE.HemisphereLight(0xFFF5E6, 0x5C4A3A, 0.75);
+            threeScene.add(hemiLight);
+
+            const sunLight = new THREE.DirectionalLight(0xFFE4B5, 2.8);
+            sunLight.position.set(32, 24, -20);
+            sunLight.castShadow = true;
+            sunLight.shadow.mapSize.width = 2048;
+            sunLight.shadow.mapSize.height = 2048;
+            sunLight.shadow.camera.near = 1;
+            sunLight.shadow.camera.far = 130;
+            const d = 26;
+            sunLight.shadow.camera.left = -d;
+            sunLight.shadow.camera.right = d;
+            sunLight.shadow.camera.top = d;
+            sunLight.shadow.camera.bottom = -d;
+            sunLight.shadow.bias = -0.0004;
+            threeScene.add(sunLight);
+
+            // Sky Dome
+            const skyGeo = new THREE.SphereGeometry(250, 32, 16);
+            const skyMat = new THREE.MeshBasicMaterial({ color: 0xECDCC7, side: THREE.BackSide });
+            threeScene.add(new THREE.Mesh(skyGeo, skyMat));
+
+            // Scene 1: Empty Residential Plot with Procedural Soil Texture
+            const groundCanvas = document.createElement('canvas');
+            groundCanvas.width = 512;
+            groundCanvas.height = 512;
+            const gCtx = groundCanvas.getContext('2d');
+            gCtx.fillStyle = '#6D5B49';
+            gCtx.fillRect(0, 0, 512, 512);
+            for (let i = 0; i < 4500; i++) {
+                gCtx.fillStyle = Math.random() > 0.5 ? '#5B4B3C' : '#7F6D58';
+                gCtx.fillRect(Math.random() * 512, Math.random() * 512, 2, 2);
+            }
+            const groundTexture = new THREE.CanvasTexture(groundCanvas);
+            groundTexture.wrapS = THREE.RepeatWrapping;
+            groundTexture.wrapT = THREE.RepeatWrapping;
+            groundTexture.repeat.set(16, 16);
+
+            const soilMaterial = new THREE.MeshStandardMaterial({
+                map: groundTexture,
+                roughness: 0.95,
+                metalness: 0.05
+            });
+            const groundGeo = new THREE.PlaneGeometry(120, 120);
+            const groundMesh = new THREE.Mesh(groundGeo, soilMaterial);
+            groundMesh.rotation.x = -Math.PI / 2;
+            groundMesh.receiveShadow = true;
+            threeScene.add(groundMesh);
+            constructionElements.soilGround = groundMesh;
+
+            // Surveying Boundary Stakes & Layout Alignment Strings
+            const surveyGroup = new THREE.Group();
+            threeScene.add(surveyGroup);
+            constructionElements.surveyGroup = surveyGroup;
+
+            const pegMat = new THREE.MeshStandardMaterial({ color: 0xD8B868, roughness: 0.8 });
+            const stringMat = new THREE.LineBasicMaterial({ color: 0xFFE082 });
+
+            const plotCorners = [
+                [-6.8, -5.8], [6.8, -5.8], [6.8, 5.8], [-6.8, 5.8]
+            ];
+            const pegPoints = [];
+            plotCorners.forEach(pt => {
+                const peg = new THREE.Mesh(new THREE.CylinderGeometry(0.04, 0.04, 0.9, 8), pegMat);
+                peg.position.set(pt[0], 0.45, pt[1]);
+                peg.castShadow = true;
+                surveyGroup.add(peg);
+                pegPoints.push(new THREE.Vector3(pt[0], 0.7, pt[1]));
+            });
+            pegPoints.push(pegPoints[0].clone()); // Close loop
+            const stringGeo = new THREE.BufferGeometry().setFromPoints(pegPoints);
+            const stringLine = new THREE.Line(stringGeo, stringMat);
+            surveyGroup.add(stringLine);
+
+            // Rebar Steel Bundles & Pallets on Plot Perimeter
+            const siteMaterialsGroup = new THREE.Group();
+            threeScene.add(siteMaterialsGroup);
+            constructionElements.siteMaterials = siteMaterialsGroup;
+
+            const steelMat = new THREE.MeshStandardMaterial({ color: 0x485058, metalness: 0.85, roughness: 0.35 });
+            for (let r = 0; r < 10; r++) {
+                const rod = new THREE.Mesh(new THREE.CylinderGeometry(0.035, 0.035, 6.5, 8), steelMat);
+                rod.rotation.z = Math.PI / 2;
+                rod.position.set(8.5, 0.05 + (r % 3) * 0.08, 2.5 + (r * 0.1));
+                rod.castShadow = true;
+                siteMaterialsGroup.add(rod);
+            }
+
+            // Brick Pallet
+            const brickMat = new THREE.MeshStandardMaterial({ color: 0xB0452E, roughness: 0.85 });
+            const palletBase = new THREE.Mesh(new THREE.BoxGeometry(2.4, 0.2, 2.0), new THREE.MeshStandardMaterial({ color: 0x8C6B45, roughness: 0.9 }));
+            palletBase.position.set(-8.5, 0.1, -4.5);
+            palletBase.castShadow = true;
+            siteMaterialsGroup.add(palletBase);
+            for (let by = 0; by < 3; by++) {
+                for (let bx = -0.8; bx <= 0.8; bx += 0.5) {
+                    for (let bz = -0.6; bz <= 0.6; bz += 0.4) {
+                        const b = new THREE.Mesh(new THREE.BoxGeometry(0.44, 0.2, 0.34), brickMat);
+                        b.position.set(-8.5 + bx, 0.3 + by * 0.22, -4.5 + bz);
+                        b.castShadow = true;
+                        siteMaterialsGroup.add(b);
+                    }
+                }
+            }
+
+            // Progressive Modern House Hierarchy
+            const houseRoot = new THREE.Group();
+            threeScene.add(houseRoot);
+            constructionElements.houseRoot = houseRoot;
+
+            // Scene 2: Foundation Trenches & Reinforced Concrete Footings
+            const foundationGroup = new THREE.Group();
+            houseRoot.add(foundationGroup);
+            constructionElements.foundation = foundationGroup;
+
+            const footingConcreteMat = new THREE.MeshStandardMaterial({ color: 0x9BA0A6, roughness: 0.85 });
+            const footingSlab = new THREE.Mesh(new THREE.BoxGeometry(13.2, 0.45, 11.2), footingConcreteMat);
+            footingSlab.position.set(0, 0.22, 0);
+            footingSlab.receiveShadow = true;
+            footingSlab.castShadow = true;
+            foundationGroup.add(footingSlab);
+
+            // Rebar Cages inside Columns (visible during foundation setting)
+            const rebarCageGroup = new THREE.Group();
+            foundationGroup.add(rebarCageGroup);
+            const colCoords = [
+                [-6, -5], [0, -5], [6, -5],
+                [-6, 0],  [0, 0],  [6, 0],
+                [-6, 5],  [0, 5],  [6, 5]
+            ];
+            colCoords.forEach(pos => {
+                for (let c = 0; c < 4; c++) {
+                    const cageRod = new THREE.Mesh(new THREE.CylinderGeometry(0.02, 0.02, 4.0, 6), steelMat);
+                    cageRod.position.set(pos[0] + (c % 2 === 0 ? -0.15 : 0.15), 2.1, pos[1] + (c < 2 ? -0.15 : 0.15));
+                    rebarCageGroup.add(cageRod);
+                }
+            });
+            foundationGroup.scale.set(1, 0.001, 1);
+
+            // Scene 3: Structural Columns & Rising Brick Walls
+            const columnsGroup = new THREE.Group();
+            houseRoot.add(columnsGroup);
+            constructionElements.columns = columnsGroup;
+
+            colCoords.forEach(pos => {
+                const col = new THREE.Mesh(new THREE.BoxGeometry(0.7, 3.8, 0.7), footingConcreteMat);
+                col.position.set(pos[0], 2.1, pos[1]);
+                col.castShadow = true;
+                col.receiveShadow = true;
+                columnsGroup.add(col);
+            });
+            columnsGroup.scale.set(1, 0.001, 1);
+
+            // Rising Brick Walls (Ground Floor)
+            const brickWalls = new THREE.Group();
+            houseRoot.add(brickWalls);
+            constructionElements.brickWalls = brickWalls;
+
+            const wallBack = new THREE.Mesh(new THREE.BoxGeometry(12.5, 3.6, 0.4), brickMat);
+            wallBack.position.set(0, 2.0, -4.8);
+            wallBack.castShadow = true;
+            brickWalls.add(wallBack);
+
+            const wallLeft = new THREE.Mesh(new THREE.BoxGeometry(0.4, 3.6, 9.8), brickMat);
+            wallLeft.position.set(-5.8, 2.0, 0);
+            wallLeft.castShadow = true;
+            brickWalls.add(wallLeft);
+
+            const wallRight = new THREE.Mesh(new THREE.BoxGeometry(0.4, 3.6, 9.8), brickMat);
+            wallRight.position.set(5.8, 2.0, 0);
+            wallRight.castShadow = true;
+            brickWalls.add(wallRight);
+
+            const wallFrontLeft = new THREE.Mesh(new THREE.BoxGeometry(4.5, 3.6, 0.4), brickMat);
+            wallFrontLeft.position.set(-3.7, 2.0, 4.8);
+            wallFrontLeft.castShadow = true;
+            brickWalls.add(wallFrontLeft);
+
+            const wallFrontRight = new THREE.Mesh(new THREE.BoxGeometry(4.5, 3.6, 0.4), brickMat);
+            wallFrontRight.position.set(3.7, 2.0, 4.8);
+            wallFrontRight.castShadow = true;
+            brickWalls.add(wallFrontRight);
+
+            brickWalls.scale.set(1, 0.001, 1);
+
+            // Cantilever First Floor Slab & Upper Storey Framing
+            const upperStructureGroup = new THREE.Group();
+            houseRoot.add(upperStructureGroup);
+            constructionElements.upperStructure = upperStructureGroup;
+
+            const midSlab = new THREE.Mesh(new THREE.BoxGeometry(14.6, 0.45, 12.6), footingConcreteMat);
+            midSlab.position.set(0, 3.9, 0.5);
+            midSlab.castShadow = true;
+            midSlab.receiveShadow = true;
+            upperStructureGroup.add(midSlab);
+
+            const upperWalls = new THREE.Mesh(new THREE.BoxGeometry(9.6, 3.4, 8.6), brickMat);
+            upperWalls.position.set(1.5, 5.8, 0.2);
+            upperWalls.castShadow = true;
+            upperStructureGroup.add(upperWalls);
+
+            const roofSlab = new THREE.Mesh(new THREE.BoxGeometry(12.2, 0.4, 10.6), new THREE.MeshStandardMaterial({ color: 0x242E38, roughness: 0.4 }));
+            roofSlab.position.set(1.5, 7.6, 0.2);
+            roofSlab.castShadow = true;
+            upperStructureGroup.add(roofSlab);
+
+            upperStructureGroup.scale.set(1, 0.001, 1);
+
+            // Scene 4 & 5: Luxury Finishes, Plaster, Tinted Glass, Driveway & Landscaping
+            const finishesGroup = new THREE.Group();
+            houseRoot.add(finishesGroup);
+            constructionElements.finishes = finishesGroup;
+
+            // Luxury Warm Ivory Stucco Shell
+            const stuccoMat = new THREE.MeshStandardMaterial({ color: 0xF7F4EC, roughness: 0.6, metalness: 0.05 });
+            const stuccoShellLower = new THREE.Mesh(new THREE.BoxGeometry(12.6, 3.65, 10.6), stuccoMat);
+            stuccoShellLower.position.set(0, 2.05, 0);
+            stuccoShellLower.castShadow = true;
+            stuccoShellLower.receiveShadow = true;
+            finishesGroup.add(stuccoShellLower);
+
+            const stuccoShellUpper = new THREE.Mesh(new THREE.BoxGeometry(9.7, 3.45, 8.7), stuccoMat);
+            stuccoShellUpper.position.set(1.5, 5.8, 0.2);
+            stuccoShellUpper.castShadow = true;
+            finishesGroup.add(stuccoShellUpper);
+
+            // Teak Wood Architectural Louvers
+            const woodMat = new THREE.MeshStandardMaterial({ color: 0x965E35, roughness: 0.4 });
+            for (let l = 0; l < 12; l++) {
+                const louver = new THREE.Mesh(new THREE.BoxGeometry(0.12, 3.2, 0.06), woodMat);
+                louver.position.set(-2.5 + l * 0.35, 5.7, 4.6);
+                louver.castShadow = true;
+                finishesGroup.add(louver);
+            }
+
+            // Floor-to-Ceiling Tinted Architectural Glazing
+            const glassMat = new THREE.MeshPhysicalMaterial({
+                color: 0x1A2B3C,
+                roughness: 0.1,
+                metalness: 0.9,
+                transmission: 0.6,
+                transparent: true,
+                opacity: 0.8
+            });
+            const mainGlassWindow = new THREE.Mesh(new THREE.BoxGeometry(5.2, 3.0, 0.1), glassMat);
+            mainGlassWindow.position.set(2.8, 5.7, 4.6);
+            finishesGroup.add(mainGlassWindow);
+
+            const groundGlassDoor = new THREE.Mesh(new THREE.BoxGeometry(3.5, 3.1, 0.1), glassMat);
+            groundGlassDoor.position.set(0, 2.0, 5.35);
+            finishesGroup.add(groundGlassDoor);
+
+            const balconyGlass = new THREE.Mesh(new THREE.BoxGeometry(4.8, 1.1, 0.05), glassMat);
+            balconyGlass.position.set(-3.5, 4.6, 5.8);
+            finishesGroup.add(balconyGlass);
+
+            // Warm Architectural Exterior Downlights
+            const warmLight1 = new THREE.PointLight(0xFFD699, 2.0, 12);
+            warmLight1.position.set(0, 3.6, 4.2);
+            finishesGroup.add(warmLight1);
+
+            const warmLight2 = new THREE.PointLight(0xFFD699, 1.8, 14);
+            warmLight2.position.set(2.5, 7.3, 4.2);
+            finishesGroup.add(warmLight2);
+
+            // Paved Stone Driveway
+            const drivewayMat = new THREE.MeshStandardMaterial({ color: 0x86888D, roughness: 0.7 });
+            const driveway = new THREE.Mesh(new THREE.BoxGeometry(4.6, 0.08, 12), drivewayMat);
+            driveway.position.set(0, 0.04, 8.5);
+            driveway.receiveShadow = true;
+            finishesGroup.add(driveway);
+
+            // Landscaped Lawn
+            const lawnMat = new THREE.MeshStandardMaterial({
+                color: 0x3D683D,
+                roughness: 0.8,
+                metalness: 0.05,
+                transparent: true,
+                opacity: 0
+            });
+            const lawnMesh = new THREE.Mesh(groundGeo, lawnMat);
+            lawnMesh.rotation.x = -Math.PI / 2;
+            lawnMesh.position.y = 0.02;
+            lawnMesh.receiveShadow = true;
+            threeScene.add(lawnMesh);
+            constructionElements.lawn = lawnMesh;
+
+            // Tropical Palm Trees
+            function createPalmTree(x, z, scale) {
+                const palmGroup = new THREE.Group();
+                palmGroup.position.set(x, 0, z);
+                palmGroup.scale.set(scale, scale, scale);
+                const trunk = new THREE.Mesh(new THREE.CylinderGeometry(0.2, 0.35, 5, 8), woodMat);
+                trunk.position.y = 2.5;
+                trunk.castShadow = true;
+                palmGroup.add(trunk);
+                for (let f = 0; f < 7; f++) {
+                    const frond = new THREE.Mesh(new THREE.ConeGeometry(1.6, 2.8, 4), new THREE.MeshStandardMaterial({ color: 0x2A582A, roughness: 0.6 }));
+                    frond.rotation.z = 1.1;
+                    frond.rotation.y = f * (Math.PI * 2 / 7);
+                    frond.position.y = 5.0;
+                    palmGroup.add(frond);
+                }
+                return palmGroup;
+            }
+            finishesGroup.add(createPalmTree(-8.5, 4.5, 1.1));
+            finishesGroup.add(createPalmTree(8.8, 2.5, 0.9));
+            finishesGroup.add(createPalmTree(9.5, -4.5, 1.2));
+
+            finishesGroup.position.y = 12; // Initially elevated/invisible
+
+            animClock = new THREE.Clock();
+
+            // Orbit Handlers
+            canvas.addEventListener('mousedown', onMouseDown);
+            canvas.addEventListener('mousemove', onMouseMove);
+            window.addEventListener('mouseup', onMouseUp);
+            canvas.addEventListener('touchstart', onTouchStart, { passive: true });
+            canvas.addEventListener('touchmove', onTouchMove, { passive: true });
+            window.addEventListener('touchend', onTouchEnd);
+
+            window.addEventListener('resize', onWindowResize);
+
+            threeAnimId = requestAnimationFrame(animateThreeConstruction);
+        }
+
+        function onMouseDown(e) {
+            if (!isOrbitingAllowed) return;
+            isUserDragging = true;
+            prevMousePos = { x: e.clientX, y: e.clientY };
+        }
+
+        function onMouseMove(e) {
+            if (!isUserDragging || !isOrbitingAllowed) return;
+            const deltaX = e.clientX - prevMousePos.x;
+            const deltaY = e.clientY - prevMousePos.y;
+            prevMousePos = { x: e.clientX, y: e.clientY };
+
+            orbitAngles.theta -= deltaX * 0.008;
+            orbitAngles.phi = Math.max(0.1, Math.min(Math.PI / 2.2, orbitAngles.phi + deltaY * 0.008));
+        }
+
+        function onMouseUp() {
+            isUserDragging = false;
+        }
+
+        function onTouchStart(e) {
+            if (!isOrbitingAllowed || e.touches.length === 0) return;
+            isUserDragging = true;
+            prevMousePos = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+        }
+
+        function onTouchMove(e) {
+            if (!isUserDragging || !isOrbitingAllowed || e.touches.length === 0) return;
+            const deltaX = e.touches[0].clientX - prevMousePos.x;
+            const deltaY = e.touches[0].clientY - prevMousePos.y;
+            prevMousePos = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+
+            orbitAngles.theta -= deltaX * 0.008;
+            orbitAngles.phi = Math.max(0.1, Math.min(Math.PI / 2.2, orbitAngles.phi + deltaY * 0.008));
+        }
+
+        function onTouchEnd() {
+            isUserDragging = false;
+        }
+
+        function onWindowResize() {
+            if (!threeCamera || !threeRenderer) return;
+            const w = window.innerWidth;
+            const h = window.innerHeight;
+            threeCamera.aspect = w / h;
+            threeCamera.updateProjectionMatrix();
+            threeRenderer.setSize(w, h);
+        }
+
+        function animateThreeConstruction() {
+            if (!threeRenderer || !threeScene || !threeCamera) return;
+
+            threeAnimId = requestAnimationFrame(animateThreeConstruction);
+
+            const elapsedTime = animClock.getElapsedTime();
+            const progress = Math.min(elapsedTime / ANIM_DURATION, 1.0);
+
+            // Update Progress Bar & HUD
+            const bar = document.getElementById('intro-progress-bar');
+            if (bar) bar.style.width = `${progress * 100}%`;
+
+            const stageLabel = document.getElementById('construction-stage-label');
+            const actionText = document.getElementById('construction-action-text');
+            const phaseText = document.getElementById('structure-phase-text');
+            const brandReveal = document.getElementById('brand-reveal-unit');
+            const orbitHint = document.getElementById('orbit-hint');
+
+            // ==========================================
+            // SCENE 1: Empty Residential Plot & Site Survey (0.00 - 0.20)
+            // ==========================================
+            if (progress < 0.20) {
+                const sub = progress / 0.20;
+                if (stageLabel) stageLabel.innerText = "Scene 01 // Empty Residential Plot • Survey Stakes";
+                if (actionText) actionText.innerText = "Site Alignment & Perimeter Layout";
+                if (phaseText) phaseText.innerText = "Undisturbed Soil & Boundary Pegs";
+
+                // Cinematic tracking shot slowly approaching empty plot
+                threeCamera.position.set(22 - sub * 4, 6.0 - sub * 1.5, 24 - sub * 4);
+                threeCamera.lookAt(0, 0.5, 0);
+
+                constructionElements.foundation.scale.set(1, 0.001, 1);
+                highlightStepMark(0);
+            }
+            // ==========================================
+            // SCENE 2: Foundation Trenches, Rebar & Concrete (0.20 - 0.42)
+            // ==========================================
+            else if (progress < 0.42) {
+                const sub = (progress - 0.20) / 0.22;
+                if (stageLabel) stageLabel.innerText = "Scene 02 // Foundation Trenches & Reinforced Slab";
+                if (actionText) actionText.innerText = "Rebar Grid Installation & Concrete Pouring";
+                if (phaseText) phaseText.innerText = "Cast-in-Place Footing Slab";
+
+                // Foundation slab forms and solidifies
+                constructionElements.foundation.scale.set(1, Math.min(1.0, sub * 1.2), 1);
+
+                // Low-angle orbiting dolly shot
+                threeCamera.position.set(16 - sub * 6, 4.2 + sub * 0.8, 18 - sub * 4);
+                threeCamera.lookAt(0, 1.0, 0);
+                highlightStepMark(1);
+            }
+            // ==========================================
+            // SCENE 3: Columns, Brick Masonry & Slabs (0.42 - 0.65)
+            // ==========================================
+            else if (progress < 0.65) {
+                const sub = (progress - 0.42) / 0.23;
+                if (stageLabel) stageLabel.innerText = "Scene 03 // Precision Brickwork & Structural Framing";
+                if (actionText) actionText.innerText = "Laying Courses & Column Pouring";
+                if (phaseText) phaseText.innerText = "Cantilever Slab & Structural Framing";
+
+                constructionElements.foundation.scale.set(1, 1, 1);
+
+                // Structural columns rise, then brick walls rise progressively
+                constructionElements.columns.scale.set(1, Math.min(1.0, sub * 1.3), 1);
+                constructionElements.brickWalls.scale.set(1, Math.max(0.001, sub * 1.1), 1);
+
+                if (sub > 0.4) {
+                    const upperSub = (sub - 0.4) / 0.6;
+                    constructionElements.upperStructure.scale.set(1, Math.max(0.001, upperSub), 1);
+                }
+
+                // Rising Crane Shot
+                threeCamera.position.set(12 - sub * 5, 5.0 + sub * 3.5, 15 - sub * 2);
+                threeCamera.lookAt(0, 3.2, 0);
+                highlightStepMark(2);
+            }
+            // ==========================================
+            // SCENE 4: Roof, Stucco Plaster, Glazing & Landscaping (0.65 - 0.86)
+            // ==========================================
+            else if (progress < 0.86) {
+                const sub = (progress - 0.65) / 0.21;
+                if (stageLabel) stageLabel.innerText = "Scene 04 // Stucco Plastering, Tinted Glazing & Finishes";
+                if (actionText) actionText.innerText = "Applying Warm Ivory Facade & Glazing";
+                if (phaseText) phaseText.innerText = "Teak Louvers, Balconies & Garden Turf";
+
+                constructionElements.columns.scale.set(1, 1, 1);
+                constructionElements.brickWalls.scale.set(1, 1, 1);
+                constructionElements.upperStructure.scale.set(1, 1, 1);
+
+                // Plaster and stucco finish slides seamlessly over the structure
+                constructionElements.finishes.position.y = Math.max(0, (1.0 - sub) * 10);
+
+                // Grass lawn and landscaping unfurl
+                constructionElements.lawn.material.opacity = Math.min(1.0, sub * 1.5);
+
+                // Site materials fade/sink out of view
+                constructionElements.siteMaterials.position.y = -sub * 4;
+                constructionElements.surveyGroup.position.y = -sub * 4;
+
+                // High Arc Panoramic Shot
+                threeCamera.position.set(15 * Math.cos(sub * 1.4 + 0.4), 7.5 + sub * 1.2, 19 * Math.sin(sub * 1.4 + 0.4));
+                threeCamera.lookAt(0, 3.5, 0);
+                highlightStepMark(3);
+            }
+            // ==========================================
+            // SCENE 5: Completed Luxury Residence & Brand Reveal (0.86 - 1.00)
+            // ==========================================
+            else {
+                const sub = (progress - 0.86) / 0.14;
+                if (stageLabel) stageLabel.innerText = "Scene 05 // Completed Modern Villa • Vaarshika Enterprises";
+                if (actionText) actionText.innerText = "Turnkey Architectural Masterpiece";
+                if (phaseText) phaseText.innerText = "Luxury Residence • Tenali, AP";
+
+                constructionElements.siteMaterials.visible = false;
+                constructionElements.surveyGroup.visible = false;
+                constructionElements.finishes.position.y = 0;
+                constructionElements.lawn.material.opacity = 1.0;
+
+                // Orbit controls active for user exploration
+                isOrbitingAllowed = true;
+                if (orbitHint) orbitHint.style.opacity = '1';
+
+                if (!isUserDragging) {
+                    orbitAngles.theta += 0.0035;
+                }
+
+                // Cinematic Slow Orbit
+                threeCamera.position.x = orbitAngles.radius * Math.sin(orbitAngles.theta) * Math.cos(orbitAngles.phi);
+                threeCamera.position.y = orbitAngles.radius * Math.sin(orbitAngles.phi) + 2.8;
+                threeCamera.position.z = orbitAngles.radius * Math.cos(orbitAngles.theta) * Math.cos(orbitAngles.phi);
+                threeCamera.lookAt(0, 3.2, 0);
+
+                // Reveal Vaarshika Enterprises Wordmark & Tagline
+                if (brandReveal) {
+                    brandReveal.style.opacity = `${Math.min(1.0, sub * 1.8)}`;
+                    brandReveal.style.pointerEvents = 'auto';
+                }
+                highlightStepMark(4);
+
+                // Transition smoothly into homepage hero section
+                if (progress >= 1.0) {
+                    setTimeout(() => {
+                        finishIntro();
+                    }, 2200);
+                }
+            }
+
+            threeRenderer.render(threeScene, threeCamera);
+        }
+
+        function highlightStepMark(idx) {
+            for (let i = 0; i <= 4; i++) {
+                const mark = document.getElementById(`step-mark-${i}`);
+                if (mark) {
+                    if (i === idx) {
+                        mark.className = "text-gold font-bold scale-105 transition-transform";
+                    } else if (i < idx) {
+                        mark.className = "text-gold-light/60";
+                    } else {
+                        mark.className = "text-slateCustom";
+                    }
+                }
+            }
+        }
+
+        function finishIntro() {
+            const overlay = document.getElementById('intro-overlay');
+            if (overlay) overlay.classList.add('fade-out');
+            sessionStorage.setItem('vaarshika_intro_seen', 'true');
+
+            if (threeAnimId) {
+                cancelAnimationFrame(threeAnimId);
+                threeAnimId = null;
+            }
+        }
+
+        function triggerIntroReplay() {
+            sessionStorage.removeItem('vaarshika_intro_seen');
+            const overlay = document.getElementById('intro-overlay');
+            if (overlay) overlay.classList.remove('fade-out');
+
+            const brandReveal = document.getElementById('brand-reveal-unit');
+            if (brandReveal) {
+                brandReveal.style.opacity = '0';
+                brandReveal.style.pointerEvents = 'none';
+            }
+
+            isOrbitingAllowed = false;
+            orbitAngles = { theta: 0.65, phi: 0.32, radius: 25 };
+
+            if (animClock) {
+                animClock.start();
+            }
+
+            if (constructionElements.siteMaterials) {
+                constructionElements.siteMaterials.visible = true;
+                constructionElements.siteMaterials.position.y = 0;
+            }
+            if (constructionElements.surveyGroup) {
+                constructionElements.surveyGroup.visible = true;
+                constructionElements.surveyGroup.position.y = 0;
+            }
+            if (constructionElements.finishes) {
+                constructionElements.finishes.position.y = 12;
+            }
+            if (constructionElements.lawn) {
+                constructionElements.lawn.material.opacity = 0;
+            }
+
+            if (!threeAnimId) {
+                threeAnimId = requestAnimationFrame(animateThreeConstruction);
+            }
+        }
+
+        /* =========================================================================
+           3. LIFECYCLE & EVENT LISTENERS
+           ========================================================================= */
+        window.addEventListener('DOMContentLoaded', () => {
+            renderProperties(propertiesData);
+
+            const skipBtn = document.getElementById('skip-intro-btn');
+            if (skipBtn) skipBtn.addEventListener('click', finishIntro);
+
+            // Mobile Menu Navigation
+            const mobileBtn = document.getElementById('mobile-menu-btn');
+            const mobileDrawer = document.getElementById('mobile-menu-drawer');
+            const hamburger = document.getElementById('hamburger-icon');
+            const close = document.getElementById('close-icon');
+
+            if (mobileBtn && mobileDrawer) {
+                mobileBtn.addEventListener('click', () => {
+                    const isHidden = mobileDrawer.classList.contains('hidden');
+                    if (isHidden) {
+                        mobileDrawer.classList.remove('hidden');
+                        hamburger.classList.add('hidden');
+                        close.classList.remove('hidden');
+                    } else {
+                        mobileDrawer.classList.add('hidden');
+                        hamburger.classList.remove('hidden');
+                        close.classList.add('hidden');
+                    }
+                });
+
+                document.querySelectorAll('.mobile-nav-link').forEach(link => {
+                    link.addEventListener('click', () => {
+                        mobileDrawer.classList.add('hidden');
+                        hamburger.classList.remove('hidden');
+                        close.classList.add('hidden');
+                    });
+                });
+            }
+
+            // Navbar Scroll Shadow
+            window.addEventListener('scroll', () => {
+                const nav = document.getElementById('main-navbar');
+                if (window.scrollY > 40) {
+                    nav.classList.add('shadow-xl', 'bg-navy/98');
+                } else {
+                    nav.classList.remove('shadow-xl');
+                }
+            });
+
+            // Start 3D Architectural Construction Showcase
+            initThreeConstructionScene();
+        });
+    </script>
+</body>
+</html>
